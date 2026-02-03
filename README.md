@@ -142,3 +142,9 @@ Did another easy question. Thank you, algorithm library.
 ```ccc00s2.cpp```
 
 Wow! A new type of question! So, it was a simulation type one. I found it much easier to do things when I write down the basic ideas of the stuff, so I'm going to do that from now on. I also have done my first weighted 100% 7pp question! The second 7p was the one yesterday, but it was so freaking easy.
+
+#### January 1
+
+```ccc96s2.cpp```
+
+An annoying one. Whitespaces were not specified on the question well.
