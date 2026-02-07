@@ -148,3 +148,9 @@ Wow! A new type of question! So, it was a simulation type one. I found it much e
 ```ccc96s2.cpp```
 
 An annoying one. Whitespaces were not specified on the question well.
+
+#### February 6
+
+```ccc18j5.cpp```
+
+I got stuck on a J5. I'd never done graph theory, so it was difficult for me.
