@@ -154,3 +154,7 @@ An annoying one. Whitespaces were not specified on the question well.
 ```ccc18j5.cpp```
 
 I got stuck on a J5. I'd never done graph theory, so it was difficult for me.
+
+#### February 11
+
+I moved to OpenGL graphics programming, and I got a triangle set up in a few days because I was dragging it a bit. I already know some of this stuff, like VAOs and VBOs and GLSL and stuff like that, and I just have to reimplement it.

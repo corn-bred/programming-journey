@@ -7,7 +7,6 @@ void LineManager::setPixel(int x, int y, uint8_t r, uint8_t g, uint8_t b, std::v
     //bitshift oh no
     if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) return; // to not core dump or somehitng
     //input[y * WIDTH + x] = (0xFF << 24) | (r << 16) | (g << 8) | b; 
-    input->insert()
     // because
     //00000000 00000000 00000000 00000000
     //alpha    red      green    blue

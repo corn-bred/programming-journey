@@ -1,6 +1,7 @@
 \bin
 \.vscode
 \compilers
+\include
 
 *.bat
 *.exe
