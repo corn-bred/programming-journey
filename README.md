@@ -161,4 +161,8 @@ I moved to OpenGL graphics programming, and I got a triangle set up in a few day
 
 #### February 20
 
-I did a bunch of stuff, all the way to Texturing. I also created a seperate header for shading and stuff
+I did a bunch of stuff, all the way to Texturing. I also created a seperate header for shading and stuff.
+
+#### March 20
+
+Sorry I haven't commited for some time. I kinda burned out a little and took a little break, and I also just keep on forgetting to commit. I now how have a rotating cube, which is pretty cool. 

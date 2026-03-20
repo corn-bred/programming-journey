@@ -1,14 +1,15 @@
 #version 330 core
 
 layout (location = 0) in vec3 aPos;
-layout (location = 1) in vec3 aColour;
-layout (location = 2) in vec2 aTexture;
+layout (location = 1) in vec2 aTexture;
 
-out vec4 vertexcolour;
 out vec2 texturecoord;
 
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
 void main () {
-    vertexcolour = vec4(aColour, 1.0f);
-    gl_Position = vec4(aPos, 1.0f);
+    gl_Position = projection * view * model * vec4(aPos, 1.0f);
     texturecoord = aTexture;
 }
