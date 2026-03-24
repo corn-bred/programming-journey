@@ -166,3 +166,11 @@ I did a bunch of stuff, all the way to Texturing. I also created a seperate head
 #### March 20
 
 Sorry I haven't commited for some time. I kinda burned out a little and took a little break, and I also just keep on forgetting to commit. I now how have a rotating cube, which is pretty cool. 
+
+#### March 22
+
+I've decided on making a second project like a game, since I heard that having 2 or 3 projects can help space and clear out your mind if you're stuck on one project.
+
+#### March 23
+
+I've revisited the fundamentals of OpenGL, basically trying to memorize the boilerplate and how it works.
