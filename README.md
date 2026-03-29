@@ -174,3 +174,7 @@ I've decided on making a second project like a game, since I heard that having 2
 #### March 23
 
 I've revisited the fundamentals of OpenGL, basically trying to memorize the boilerplate and how it works.
+
+#### March 28
+
+I finished the first chapter of LearnOpenGL and learned about static libraries. Now, I know how to actually make a release build.
