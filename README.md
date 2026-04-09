@@ -178,3 +178,7 @@ I've revisited the fundamentals of OpenGL, basically trying to memorize the boil
 #### March 28
 
 I finished the first chapter of LearnOpenGL and learned about static libraries. Now, I know how to actually make a release build.
+
+#### April 3-8
+
+So, I've gotten some work done. I got specular and Phong to work, so that's pretty cool. Things are starting to look better.
