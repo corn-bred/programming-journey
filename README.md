@@ -182,3 +182,7 @@ I finished the first chapter of LearnOpenGL and learned about static libraries. 
 #### April 3-8
 
 So, I've gotten some work done. I got specular and Phong to work, so that's pretty cool. Things are starting to look better.
+
+#### April 9
+
+Uhhh... I had some free time today and decided to work on this a bit more. I got to specular reflections! Outcomes are starting to feel more rewarding.
