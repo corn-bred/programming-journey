@@ -186,3 +186,7 @@ So, I've gotten some work done. I got specular and Phong to work, so that's pret
 #### April 9
 
 Uhhh... I had some free time today and decided to work on this a bit more. I got to specular reflections! Outcomes are starting to feel more rewarding.
+
+#### April 11 - 12
+
+I got different types of lights to work. I tried normal shading but didn't account for the face normals, so I'll put it off for now.

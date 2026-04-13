@@ -63,7 +63,7 @@ uniform LightSpotlight light;
 void main() {
     vec3 normalmapcol = texture(material.normalmap, TexCoords).rgb;
 
-    vec3 norm = normalize( vec3(Normal.x + normalmapcol.r * material.bumpstrength, Normal.y + normalmapcol.g * material.bumpstrength, Normal.z + normalmapcol.b * material.bumpstrength) );//approximate but idc
+    vec3 norm = normalize( vec3(Normal.x + normalmapcol.r * 0, Normal.y + normalmapcol.g * 0, Normal.z + normalmapcol.b * 0) );//approximate but idc
 
     vec3 lightDir = normalize(lightPos - FragPos);  
     //vec3 lightDir = normalize(-light.direction);

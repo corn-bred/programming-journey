@@ -251,8 +251,8 @@ int main () {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*8, (void*)0);
     glEnableVertexAttribArray(0);
-    Shader cubeShader("projects/OpenGL/Chapter 3/src/vertCube.glsl", "projects/OpenGL/Chapter 3/src/fragCube.glsl");
-    Shader lightingShader("projects/OpenGL/Chapter 3/src/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/fragLighting.glsl");
+    Shader cubeShader("src/vertCube.glsl", "src/fragCube.glsl");
+    Shader lightingShader("src/vertLighting.glsl", "src/fragLighting.glsl");
 
     GLuint cratetexture;
     glGenTextures(1, &cratetexture);
@@ -264,7 +264,7 @@ int main () {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         int width, height, nrchannels;
         stbi_set_flip_vertically_on_load(true);
-        unsigned char *data = stbi_load("projects/OpenGL/Chapter 3/res/container2.png", &width, &height, &nrchannels, 0);
+        unsigned char *data = stbi_load("res/container2.png", &width, &height, &nrchannels, 0);
         if (data) {
             cout << "SUCCESS: " << width << "x" << height << ", channels=" << nrchannels << endl;
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -281,7 +281,7 @@ int main () {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         int width, height, nrchannels;
-        unsigned char *data = stbi_load("projects/OpenGL/Chapter 3/res/container2_specular.png", &width, &height, &nrchannels, 0);
+        unsigned char *data = stbi_load("res/container2_specular.png", &width, &height, &nrchannels, 0);
         if (data) {
             cout << "SUCCESS: " << width << "x" << height << ", channels=" << nrchannels << endl;
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -298,7 +298,7 @@ int main () {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         int width, height, nrchannels;
-        unsigned char *data = stbi_load("projects/OpenGL/Chapter 3/res/container2_normal.png", &width, &height, &nrchannels, 0);
+        unsigned char *data = stbi_load("res/container2_normal.png", &width, &height, &nrchannels, 0);
         if (data) {
             cout << "SUCCESS: " << width << "x" << height << ", channels=" << nrchannels << endl;
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
@@ -315,7 +315,7 @@ int main () {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         int width, height, nrchannels;
-        unsigned char *data = stbi_load("projects/OpenGL/Chapter 3/res/container2_ambient.png", &width, &height, &nrchannels, 0);
+        unsigned char *data = stbi_load("res/container2_ambient.png", &width, &height, &nrchannels, 0);
         if (data) {
             cout << "SUCCESS: " << width << "x" << height << ", channels=" << nrchannels << endl;
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
