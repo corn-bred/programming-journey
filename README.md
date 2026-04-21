@@ -190,3 +190,7 @@ Uhhh... I had some free time today and decided to work on this a bit more. I got
 #### April 11 - 12
 
 I got different types of lights to work. I tried normal shading but didn't account for the face normals, so I'll put it off for now.
+
+#### April 18 - 20
+
+I'm trying to clean up my code so I don't feel lost when I go through the files. I think doing this will further strengthen my understanding of each component. I also am going to add some RAII wrappers just as a good practice.

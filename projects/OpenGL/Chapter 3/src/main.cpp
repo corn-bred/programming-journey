@@ -3,9 +3,7 @@
 #include <iostream>
 #include <cmath>
 #include "shaders.h"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "camera.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -16,17 +14,14 @@ bool firstMouse = true;
 
 int WIDTH = 800, HEIGHT = 600;
 float lastX = (float)(WIDTH)/2, lastY = (float)(HEIGHT)/2;
-float yaw = -90.0f, pitch = 0.0f;
+
 float deltaTime = 0.0f, lastframe = 0.0f;
 
 bool f11pressed = false, fullscreen = false;
 
 float fov = 45.0f;
 
-glm::vec3 cameraPos   = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-glm::vec3 cameraUp    = glm::vec3(0.0f, 1.0f,  0.0f);
-glm::vec3 cameraRight = glm::vec3(1.0f, 0.0f, 0.0f);
+Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
@@ -37,7 +32,7 @@ void framebuffer_size_callback(GLFWwindow *window, int width, int height) { //ma
 }
 
 void processinput(GLFWwindow *window) {
-    const float cameraSpeed = 2.5f * deltaTime;
+    const float cameraSpeed = 2.5f;
     if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GLFW_TRUE);
     if(glfwGetKey(window, GLFW_KEY_F11) == GLFW_PRESS) {
@@ -75,24 +70,25 @@ void processinput(GLFWwindow *window) {
     if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     */
-   //game movement
+    //game movement
+    Movement movement = NONE;
     if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        cameraPos += glm::normalize(glm::vec3(cameraFront.x,0,cameraFront.z)) * cameraSpeed;
+        movement = FORWARD;
     if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        cameraPos -= glm::normalize(glm::vec3(cameraFront.x,0,cameraFront.z)) * cameraSpeed;
+        movement = BACKWARD;
     if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        cameraPos += glm::normalize(cameraRight) * cameraSpeed;
+        movement = LEFT;
     if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        cameraPos -= glm::normalize(cameraRight) * cameraSpeed;
+        movement = RIGHT;
     if(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-        cameraPos.y += cameraSpeed;
+        movement = UP;
     if(glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
-        cameraPos.y -= cameraSpeed;
+        movement = DOWN;
+    
+    camera.keyboardprocess(movement, deltaTime, cameraSpeed);
 }
 
 void mousecallback(GLFWwindow *window, double xpos, double ypos) {
-    const float sensitivity = 0.1f;
-
     if (firstMouse || f11pressed) {
         lastX = xpos;
         lastY = ypos;
@@ -104,23 +100,8 @@ void mousecallback(GLFWwindow *window, double xpos, double ypos) {
     lastX = xpos;
     lastY = ypos;
 
-    xoffset *= sensitivity;
-    yoffset *= sensitivity;
-
-    yaw += xoffset;
-    pitch += yoffset;
+    camera.mouseprocess(xoffset, yoffset, GL_TRUE);
     
-    //euler xie
-    if(pitch > 89.0f)
-        pitch =  89.0f;
-    if(pitch < -89.0f)
-        pitch = -89.0f;
-
-    glm::vec3 direction;
-    direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    direction.y = sin(glm::radians(pitch));
-    direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    cameraFront = glm::normalize(direction);
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
@@ -188,6 +169,13 @@ glm::vec3 cubePositions[] = {
     glm::vec3( 1.5f,  2.0f, -2.5f),
     glm::vec3( 1.5f,  0.2f, -1.5f),
     glm::vec3(-1.3f,  1.0f, -1.5f)
+};
+
+glm::vec3 pointLightPositions[] = {
+    glm::vec3( 0.7f,  0.2f,  2.0f),
+    glm::vec3( 2.3f, -3.3f, -4.0f),
+    glm::vec3(-4.0f,  2.0f, -12.0f),
+    glm::vec3( 0.0f,  0.0f, -3.0f)
 };
 
 int main () {
@@ -338,17 +326,9 @@ int main () {
         glm::mat4 projection = glm::mat4(1.0f);
         projection = glm::perspective(glm::radians(fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
 
-        //Right axis
-        glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-        cameraRight = glm::normalize(glm::cross(up, cameraFront));
-
-        //Up axis
-        cameraUp = glm::cross(cameraFront, cameraRight);
-
-        const float radius = 10.0f;
-        float camX = sin(glfwGetTime())*radius, camZ = cos(glfwGetTime())*radius;
+        camera.updateCamera();
         
-        glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+        glm::mat4 view = camera.calculateView();
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -368,10 +348,10 @@ int main () {
         cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
 
         //cubeShader.setVec3("lightColor",  1.0f, 1.0f, 1.0f);
-        cubeShader.setVec3("lightPos", cameraPos);
+        cubeShader.setVec3("lightPos", camera.position);
 
         cubeShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
-        cubeShader.setVec3("viewPos", cameraPos);
+        cubeShader.setVec3("viewPos", camera.position);
 
         cubeShader.setint("material.diffuseStrength", 0);
         cubeShader.setint("material.specularStrength", 1);
@@ -379,13 +359,53 @@ int main () {
 
         cubeShader.setint("material.normalmap", 3);
 
-        cubeShader.setfloat("light.constant", 1.0f);
-        cubeShader.setfloat("light.linear", 0.09f);
-        cubeShader.setfloat("light.quadratic", 0.032f);
-        cubeShader.setVec3("light.position",  cameraPos);
-        cubeShader.setVec3("light.direction", cameraFront);
-        cubeShader.setfloat("light.innercutoff", glm::cos(glm::radians(25.0f)));
-        cubeShader.setfloat("light.outercutoff", glm::cos(glm::radians(30.0f)));
+        cubeShader.setVec3("sun.direction", -0.2f, -1.0f, -0.3f);
+        cubeShader.setVec3("sun.ambientStrength", 0.05f, 0.05f, 0.05f);
+        cubeShader.setVec3("sun.diffuseStrength", 0.4f, 0.4f, 0.4f);
+        cubeShader.setVec3("sun.specularStrength", 0.5f, 0.5f, 0.5f);
+        // point light 1
+        cubeShader.setVec3("pointLights[0].position", pointLightPositions[0]);
+        cubeShader.setVec3("pointLights[0].ambientStrength", 0.05f, 0.05f, 0.05f);
+        cubeShader.setVec3("pointLights[0].diffuseStrength", 0.8f, 0.8f, 0.8f);
+        cubeShader.setVec3("pointLights[0].specularStrength", 1.0f, 1.0f, 1.0f);
+        cubeShader.setfloat("pointLights[0].constant", 1.0f);
+        cubeShader.setfloat("pointLights[0].linear", 0.09f);
+        cubeShader.setfloat("pointLights[0].quadratic", 0.032f);
+        // point light 2
+        cubeShader.setVec3("pointLights[1].position", pointLightPositions[1]);
+        cubeShader.setVec3("pointLights[1].ambientStrength", 0.05f, 0.05f, 0.05f);
+        cubeShader.setVec3("pointLights[1].diffuseStrength", 0.8f, 0.8f, 0.8f);
+        cubeShader.setVec3("pointLights[1].specularStrength", 1.0f, 1.0f, 1.0f);
+        cubeShader.setfloat("pointLights[1].constant", 1.0f);
+        cubeShader.setfloat("pointLights[1].linear", 0.09f);
+        cubeShader.setfloat("pointLights[1].quadratic", 0.032f);
+        // point light 3
+        cubeShader.setVec3("pointLights[2].position", pointLightPositions[2]);
+        cubeShader.setVec3("pointLights[2].ambientStrength", 0.05f, 0.05f, 0.05f);
+        cubeShader.setVec3("pointLights[2].diffuseStrength", 0.8f, 0.8f, 0.8f);
+        cubeShader.setVec3("pointLights[2].specularStrength", 1.0f, 1.0f, 1.0f);
+        cubeShader.setfloat("pointLights[2].constant", 1.0f);
+        cubeShader.setfloat("pointLights[2].linear", 0.09f);
+        cubeShader.setfloat("pointLights[2].quadratic", 0.032f);
+        // point light 4
+        cubeShader.setVec3("pointLights[3].position", pointLightPositions[3]);
+        cubeShader.setVec3("pointLights[3].ambientStrength", 0.05f, 0.05f, 0.05f);
+        cubeShader.setVec3("pointLights[3].diffuseStrength", 0.8f, 0.8f, 0.8f);
+        cubeShader.setVec3("pointLights[3].specularStrength", 1.0f, 1.0f, 1.0f);
+        cubeShader.setfloat("pointLights[3].constant", 1.0f);
+        cubeShader.setfloat("pointLights[3].linear", 0.09f);
+        cubeShader.setfloat("pointLights[3].quadratic", 0.032f);
+        // spotLight
+        cubeShader.setVec3("spotlight.position", camera.position);
+        cubeShader.setVec3("spotlight.direction", camera.front);
+        cubeShader.setVec3("spotlight.ambientStrength", 0.0f, 0.0f, 0.0f);
+        cubeShader.setVec3("spotlight.diffuseStrength", 1.0f, 1.0f, 1.0f);
+        cubeShader.setVec3("spotlight.specularStrength", 1.0f, 1.0f, 1.0f);
+        cubeShader.setfloat("spotlight.constant", 1.0f);
+        cubeShader.setfloat("spotlight.linear", 0.09f);
+        cubeShader.setfloat("spotlight.quadratic", 0.032f);
+        cubeShader.setfloat("spotlight.innercutoff", glm::cos(glm::radians(12.5f)));
+        cubeShader.setfloat("spotlight.outercutoff", glm::cos(glm::radians(15.0f)));    
 
         
 
