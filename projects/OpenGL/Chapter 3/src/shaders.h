@@ -1,5 +1,4 @@
-#ifndef SHADERS_H
-#define SHADERS_H
+#pragma once
 
 #include <glad/glad.h>
 
@@ -39,5 +38,3 @@ class Shader {
     
     void setMat4(const std::string &name, const glm::mat4 &mat);
 };
-
-#endif

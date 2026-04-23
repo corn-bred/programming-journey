@@ -1,10 +1,7 @@
 # Starting December 2025
 # Development Log
 
-## Project: Software Rasterizer
-**Start Date:** December 11, 2025  
-**Current Phase:** Core rasterization algorithms  
-
+Start Date: December 11, 2025  
 ---
 
 ### Daily Entries
@@ -19,14 +16,13 @@ and how it works
 
 **Technical Decisions:**
 1. Implementing from scratch in C++ (no graphics libraries)
-2. ASCII output first → OpenGL comparison later
+2. ASCII output first, then OpenGL comparison later
 3. Starting with cube (8 vertices, 12 edges)
 
-**Blockers:** 
 - Internet access limited to 20-minute windows
 - Need to find efficient offline C++ documentation
 
-**Insights:**
+
 - The perspective projection formula (x/z, y/z) assumes camera at origin looking along z-axis
 - Bresenham's algorithm uses integer arithmetic only - important for optimization
 
@@ -194,3 +190,7 @@ I got different types of lights to work. I tried normal shading but didn't accou
 #### April 18 - 20
 
 I'm trying to clean up my code so I don't feel lost when I go through the files. I think doing this will further strengthen my understanding of each component. I also am going to add some RAII wrappers just as a good practice.
+
+#### April 21 - 22
+
+I have created some broken code. I worked for about 4 hours so I think it'll be enough for now. I'll rewrite the code tomorrow.

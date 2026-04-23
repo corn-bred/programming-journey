@@ -3,10 +3,8 @@
 #include <iostream>
 #include <cmath>
 #include "shaders.h"
+#include "renderer.h"
 #include "camera.h"
-
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
 
 using namespace std;
 
@@ -113,7 +111,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
         fov = 90.0f;
 }
 
-float vertices[] = {
+/*float vertices[] = {
     // positions          // normals           // texture coords
     -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
      0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
@@ -156,7 +154,7 @@ float vertices[] = {
      0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
     -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
     -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
-};
+};*/
 
 glm::vec3 cubePositions[] = {
     glm::vec3( 0.0f,  0.0f,  0.0f),
@@ -180,7 +178,7 @@ glm::vec3 pointLightPositions[] = {
 
 int main () {
 
-    if (!glfwInit()) {
+    /*if (!glfwInit()) {
         cout << "Failed to initialize GLFW3.\n";
         return -1;
     }
@@ -239,8 +237,7 @@ int main () {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*8, (void*)0);
     glEnableVertexAttribArray(0);
-    Shader cubeShader("projects/OpenGL/Chapter 3/src/vertCube.glsl", "projects/OpenGL/Chapter 3/src/fragCube.glsl");
-    Shader lightingShader("projects/OpenGL/Chapter 3/src/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/fragLighting.glsl");
+    
 
     GLuint cratetexture;
     glGenTextures(1, &cratetexture);
@@ -310,9 +307,18 @@ int main () {
             glGenerateMipmap(GL_TEXTURE_2D);
         } else {cerr << "Texture failed to load" << endl; return 1;}
         stbi_image_free(data);
-    }
+    }*/
+    vector<char*> files = {
+        "projects/OpenGL/Chapter 3/res/container2.png",
+        "projects/OpenGL/Chapter 3/res/container2_specular.png",
+        "projects/OpenGL/Chapter 3/res/container2_normal.png"
+    };
+    RenderHandler renderer(600, 800, "Cornbread Program (Press esc to exit)", framebuffer_size_callback, mousecallback, scroll_callback, files);
+
+    Shader cubeShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
+    Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
     
-    while(!glfwWindowShouldClose(window)) {
+    while(!glfwWindowShouldClose(renderer.window)) {
         //cout << cameraRight.x << ", " << cameraRight.y << ", "<< cameraRight.z << endl;
         //yeahhhh deltatime
         float currentframe = glfwGetTime();
@@ -321,7 +327,7 @@ int main () {
 
         //lightPos = glm::vec3(sin(currentframe) *2.0f, sin(currentframe*5.0f) *0.2f, -cos(currentframe)*2.0f);
 
-        processinput(window);
+        processinput(renderer.window);
 
         glm::mat4 projection = glm::mat4(1.0f);
         projection = glm::perspective(glm::radians(fov), (float)WIDTH / (float)HEIGHT, 0.1f, 100.0f);
@@ -332,7 +338,7 @@ int main () {
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glBindTexture(GL_TEXTURE_2D, cratetexture);
+        glBindTexture(GL_TEXTURE_2D, renderer.textures[0]);
 
         cubeShader.use();
         cubeShader.setVec3("material.specularStrength", 0.5f, 0.5f, 0.5f);
@@ -415,15 +421,15 @@ int main () {
         cubeShader.setMat4("view", view);
 
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, cratetexture);
+        glBindTexture(GL_TEXTURE_2D, renderer.textures[0]); //texture colour
         glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, cratetexturespec);
+        glBindTexture(GL_TEXTURE_2D, renderer.textures[1]); //speculation
         glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, cratetextureambient);
+        glBindTexture(GL_TEXTURE_2D, renderer.textures[2]); //ambience
         glActiveTexture(GL_TEXTURE3);
-        glBindTexture(GL_TEXTURE_2D, cratetexturebump);
+        glBindTexture(GL_TEXTURE_2D, renderer.textures[0]); //bump
 
-        glBindVertexArray(VAO);
+        glBindVertexArray(renderer.buffermanager.cubeVAO);
         for (int i = 0; i < 10; i++) {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
@@ -445,13 +451,9 @@ int main () {
         glDrawArrays(GL_TRIANGLES, 0, 36);*/
         glBindVertexArray(0);
 
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(renderer.window);
         glfwPollEvents();
     }
-
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
-    glDeleteBuffers(1, &lightingVAO);
     
     glfwTerminate();
     return 0;
