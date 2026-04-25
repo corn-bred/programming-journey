@@ -52,28 +52,24 @@ class Camera {
         return glm::lookAt(position, position + front, up);
     }
 
-    void keyboardprocess(Movement movement, float deltaTime, float cameraSpeed) {
-        switch(movement) {
-            case FORWARD:
-                position += glm::normalize(glm::vec3(front.x, 0, front.z)) * cameraSpeed * deltaTime;
-                break;
-            case BACKWARD:
-                position -= glm::normalize(glm::vec3(front.x, 0, front.z)) * cameraSpeed * deltaTime;
-                break;
-            case LEFT:
-                position += glm::normalize(right) * cameraSpeed * deltaTime;
-                break;
-            case RIGHT:
-                position -= glm::normalize(right) * cameraSpeed * deltaTime;
-                break;
-            case UP:
-                position.y += cameraSpeed * deltaTime;
-                break;
-            case DOWN:
-                position.y -= cameraSpeed * deltaTime;
-                break;
-            default:
-                break;
+    void keyboardprocess(bool movements[], float deltaTime, float cameraSpeed) {
+        if (movements[0] == GLFW_PRESS) {
+            position += glm::normalize(glm::vec3(front.x, 0, front.z)) * cameraSpeed * deltaTime;
+        }
+        if (movements[1] == GLFW_PRESS) {
+            position -= glm::normalize(glm::vec3(front.x, 0, front.z)) * cameraSpeed * deltaTime;
+        }
+        if (movements[2] == GLFW_PRESS) {
+            position += glm::normalize(right) * cameraSpeed * deltaTime;
+        }
+        if (movements[3] == GLFW_PRESS) {
+            position -= glm::normalize(right) * cameraSpeed * deltaTime;
+        }
+        if (movements[4] == GLFW_PRESS) {
+            position.y += cameraSpeed * deltaTime;
+        }
+        if (movements[5] == GLFW_PRESS) {
+            position.y -= cameraSpeed * deltaTime;
         }
     }
 

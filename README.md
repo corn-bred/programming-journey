@@ -198,3 +198,7 @@ I have created some broken code. I worked for about 4 hours so I think it'll be 
 #### April 24
 
 I've created the library for vertex buffering. The bug took me too long to fix but now it's done.
+
+#### April 25
+
+I've created the library for textures now, along with adding some fps indicators and movement fixes.

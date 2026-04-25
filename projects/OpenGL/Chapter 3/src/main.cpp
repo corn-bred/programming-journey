@@ -2,13 +2,15 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <cmath>
+#include <cstdlib>
+#include <sstream>
 #include "shaders.h"
-#include "vertexbuffer.h"
+//#include "cubebuffer.h"
 //#include "renderer.h" //broken
 #include "camera.h"
+#include "texturebuffer.h"
+#include "vertexbuffer.h"
 
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
 
 using namespace std;
 
@@ -73,21 +75,21 @@ void processinput(GLFWwindow *window) {
         cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     */
     //game movement
-    Movement movement = NONE;
+    bool movements[6]; //W:0 S:1 A:2 D:3 SPACE:4 CONTROL:5
     if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        movement = FORWARD;
+        movements[0] = GLFW_PRESS;
     if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        movement = BACKWARD;
+        movements[1] = GLFW_PRESS;
     if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        movement = LEFT;
+        movements[2] = GLFW_PRESS;
     if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        movement = RIGHT;
+        movements[3] = GLFW_PRESS;
     if(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-        movement = UP;
+        movements[4] = GLFW_PRESS;
     if(glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
-        movement = DOWN;
+        movements[5] = GLFW_PRESS;
     
-    camera.keyboardprocess(movement, deltaTime, cameraSpeed);
+    camera.keyboardprocess(movements, deltaTime, cameraSpeed);
 }
 
 void mousecallback(GLFWwindow *window, double xpos, double ypos) {
@@ -218,118 +220,33 @@ int main () {
     glfwSetCursorPosCallback(window, mousecallback);
     glfwSetScrollCallback(window, scroll_callback);
 
-    /*GLuint VAO;
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
+    VertexBuffer cubebuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
+    cubebuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
+    cubebuffer.addAttribute(1, 8, 3, GL_FLOAT, sizeof(float), 3);
+    cubebuffer.addAttribute(2, 8, 2, GL_FLOAT, sizeof(float), 6);
 
-    GLuint VBO;
-    glGenBuffers(1, &VBO); //creates ID for it
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO); //Bind the buffer to the job as VBO
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW); //Add the data
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*8, (void*)0);
-    glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float)*8, (void*)(sizeof(float)*3));
-    glEnableVertexAttribArray(1);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float)*8, (void*)(sizeof(float)*6));
-    glEnableVertexAttribArray(2);*/
-    VertexBuffer vertexbuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
-    vertexbuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
-    vertexbuffer.addAttribute(1, 8, 3, GL_FLOAT, sizeof(float), 3);
-    vertexbuffer.addAttribute(2, 8, 2, GL_FLOAT, sizeof(float), 6);
-    /*GLuint lightingVAO;
-    glGenVertexArrays(1, &lightingVAO);
-    glBindVertexArray(lightingVAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float)*8, (void*)0);
-    glEnableVertexAttribArray(0);*/
+    VertexBuffer lightbuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
+    cubebuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
     
-
-    GLuint cratetexture;
-    glGenTextures(1, &cratetexture);
-    {
-        glBindTexture(GL_TEXTURE_2D, cratetexture);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        int width, height, nrchannels;
-        stbi_set_flip_vertically_on_load(true);
-        unsigned char *data = stbi_load("projects/OpenGL/Chapter 3/res/container2.png", &width, &height, &nrchannels, 0);
-        if (data) {
-            cout << "SUCCESS: " << width << "x" << height << ", channels=" << nrchannels << endl;
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-            glGenerateMipmap(GL_TEXTURE_2D);
-        } else {cerr << "Texture failed to load" << endl; return 1;}
-        stbi_image_free(data);
-    }
-    GLuint cratetexturespec;
-    glGenTextures(1, &cratetexturespec);
-    {
-        glBindTexture(GL_TEXTURE_2D, cratetexturespec);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        int width, height, nrchannels;
-        unsigned char *data = stbi_load("projects/OpenGL/Chapter 3/res/container2_specular.png", &width, &height, &nrchannels, 0);
-        if (data) {
-            cout << "SUCCESS: " << width << "x" << height << ", channels=" << nrchannels << endl;
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-            glGenerateMipmap(GL_TEXTURE_2D);
-        } else {cerr << "Texture failed to load" << endl; return 1;}
-        stbi_image_free(data);
-    }
-    GLuint cratetexturebump;
-    glGenTextures(1, &cratetexturebump);
-    {
-        glBindTexture(GL_TEXTURE_2D, cratetexturebump);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        int width, height, nrchannels;
-        unsigned char *data = stbi_load("projects/OpenGL/Chapter 3/res/container2_normal.png", &width, &height, &nrchannels, 0);
-        if (data) {
-            cout << "SUCCESS: " << width << "x" << height << ", channels=" << nrchannels << endl;
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-            glGenerateMipmap(GL_TEXTURE_2D);
-        } else {cerr << "Texture failed to load" << endl; return 1;}
-        stbi_image_free(data);
-    }
-    GLuint cratetextureambient;
-    glGenTextures(1, &cratetextureambient);
-    {
-        glBindTexture(GL_TEXTURE_2D, cratetextureambient);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-        int width, height, nrchannels;
-        unsigned char *data = stbi_load("projects/OpenGL/Chapter 3/res/container2_ambient.png", &width, &height, &nrchannels, 0);
-        if (data) {
-            cout << "SUCCESS: " << width << "x" << height << ", channels=" << nrchannels << endl;
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
-            glGenerateMipmap(GL_TEXTURE_2D);
-        } else {cerr << "Texture failed to load" << endl; return 1;}
-        stbi_image_free(data);
-    }
-    /*vector<char*> files = {
-        "projects/OpenGL/Chapter 3/res/container2.png",
-        "projects/OpenGL/Chapter 3/res/container2_specular.png",
-        "projects/OpenGL/Chapter 3/res/container2_normal.png"
-    };*/
     //RenderHandler renderer(600, 800, "Cornbread Program (Press esc to exit)", framebuffer_size_callback, mousecallback, scroll_callback, files);
+    TextureBuffer cratetexture("projects/OpenGL/Chapter 3/res/container2.png");
+    TextureBuffer cratetexturespec("projects/OpenGL/Chapter 3/res/container2_specular.png");
+    TextureBuffer cratetexturebump("projects/OpenGL/Chapter 3/res/container2_normal.png");
+    TextureBuffer cratetextureambient("projects/OpenGL/Chapter 3/res/container2_ambient.png");
 
     Shader cubeShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
     Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
-    
+    unsigned int fpsCounter = 0;
     while(!glfwWindowShouldClose(window)) {
-        //cout << cameraRight.x << ", " << cameraRight.y << ", "<< cameraRight.z << endl;
         //yeahhhh deltatime
         float currentframe = glfwGetTime();
         deltaTime = currentframe - lastframe;
+        if (floor(currentframe) != floor(lastframe)) {
+            stringstream titlestring;
+            titlestring << "Cornbread Program (FPS: " << fpsCounter << ")";
+            glfwSetWindowTitle(window, titlestring.str().c_str()); 
+            fpsCounter = 0;
+        }
         lastframe = currentframe;  
 
         //lightPos = glm::vec3(sin(currentframe) *2.0f, sin(currentframe*5.0f) *0.2f, -cos(currentframe)*2.0f);
@@ -427,16 +344,20 @@ int main () {
         cubeShader.setMat4("projection", projection);
         cubeShader.setMat4("view", view);
 
-        glActiveTexture(GL_TEXTURE0);
+        /*glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, cratetexture); //texture colour
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, cratetexturespec); //speculation
         glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, cratetextureambient); //ambience
         glActiveTexture(GL_TEXTURE3);
-        glBindTexture(GL_TEXTURE_2D, cratetexturebump); //bump
+        glBindTexture(GL_TEXTURE_2D, cratetexturebump); //bump*/
+        cratetexture.bindTexture();
+        cratetexturespec.bindTexture();
+        cratetextureambient.bindTexture();
+        cratetexturebump.bindTexture();
         
-        glBindVertexArray(vertexbuffer.VAO);
+        cubebuffer.bind();
         for (int i = 0; i < 10; i++) {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
@@ -457,6 +378,8 @@ int main () {
         glBindVertexArray(lightingVAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);*/
         glBindVertexArray(0);
+
+        fpsCounter++;
 
         glfwSwapBuffers(window);
         glfwPollEvents();
