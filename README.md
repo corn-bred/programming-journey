@@ -194,3 +194,7 @@ I'm trying to clean up my code so I don't feel lost when I go through the files.
 #### April 21 - 22
 
 I have created some broken code. I worked for about 4 hours so I think it'll be enough for now. I'll rewrite the code tomorrow.
+
+#### April 24
+
+I've created the library for vertex buffering. The bug took me too long to fix but now it's done.

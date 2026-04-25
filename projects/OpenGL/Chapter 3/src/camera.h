@@ -23,10 +23,21 @@ class Camera {
     glm::vec3 right = glm::vec3(1.0f, 0.0f, 0.0f);
     float yaw = -90.0f, pitch = 0.0f;
 
-    
+    Camera(glm::vec3 cameraPos) : position(cameraPos) {
+        glm::vec3 direction;
+        direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+        direction.y = sin(glm::radians(pitch));
+        direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+        front = glm::normalize(direction);
+    }
 
-    Camera(glm::vec3 cameraPos) : position(cameraPos) {}
-    Camera() : position(glm::vec3(0.0f)) {}
+    Camera() : position(glm::vec3(0.0f)) {
+        glm::vec3 direction;
+        direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+        direction.y = sin(glm::radians(pitch));
+        direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+        front = glm::normalize(direction);
+    }
 
     void updateCamera() {
         //Right axis

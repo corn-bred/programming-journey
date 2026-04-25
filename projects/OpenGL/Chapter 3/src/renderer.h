@@ -58,7 +58,7 @@ class RenderHandler {
     BufferManager buffermanager;
     RenderHandler(int width, int height, char *title, GLFWframebuffersizefun sizecallback, GLFWcursorposfun mousecallback, GLFWscrollfun scrollcallback, std::vector<char*> files) : WIDTH(width), HEIGHT(height) {
         //_NUMBEROFWINDOWS++;
-        cout << "completed init";
+        std::cout << "completed init";
         _startupInitialize(title, sizecallback, mousecallback, scrollcallback);
         
         buffermanager.setupVertexBuffer();
