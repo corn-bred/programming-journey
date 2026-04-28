@@ -202,3 +202,6 @@ I've created the library for vertex buffering. The bug took me too long to fix b
 #### April 25
 
 I've created the library for textures now, along with adding some fps indicators and movement fixes.
+
+#### April 26
+I don't think I did much today, but I'm going to make a library that can create lights.

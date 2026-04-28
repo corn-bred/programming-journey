@@ -10,7 +10,8 @@
 #include "camera.h"
 #include "texturebuffer.h"
 #include "vertexbuffer.h"
-
+#include "setup.h"
+#include "data.h"
 
 using namespace std;
 
@@ -27,198 +28,18 @@ float fov = 45.0f;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 
+#include "events.h"
+
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
-void framebuffer_size_callback(GLFWwindow *window, int width, int height) { //makes sure GLAD keeps the rendering canvas in sync
-    WIDTH = width;
-    HEIGHT = height;
-    glViewport(0,0,WIDTH,HEIGHT);
-}
-
-void processinput(GLFWwindow *window) {
-    const float cameraSpeed = 2.5f;
-    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, GLFW_TRUE);
-    if(glfwGetKey(window, GLFW_KEY_F11) == GLFW_PRESS) {
-        double xpos, ypos;
-        if (!f11pressed) {
-        f11pressed = true;
-        GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-        const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
-        if (!fullscreen) {
-            glfwMaximizeWindow(window);
-            fullscreen = true;
-            
-        } else {
-            fullscreen = false;
-            WIDTH = 800;
-            HEIGHT = 600;
-            glfwRestoreWindow(window);
-            glfwSetWindowSize(window, WIDTH, HEIGHT);
-            glfwSetWindowPos(window, (mode->width - WIDTH)/2, (mode->height - HEIGHT)/2);
-        }
-        glViewport(0,0,WIDTH,HEIGHT);
-        }
-    } else {
-        f11pressed = false;
-    }
-    //euler movement
-    /*
-    if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        cameraPos += cameraSpeed * cameraFront;
-    if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        cameraPos -= cameraSpeed * cameraFront;
-    if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-    if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-    */
-    //game movement
-    bool movements[6]; //W:0 S:1 A:2 D:3 SPACE:4 CONTROL:5
-    if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-        movements[0] = GLFW_PRESS;
-    if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-        movements[1] = GLFW_PRESS;
-    if(glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-        movements[2] = GLFW_PRESS;
-    if(glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-        movements[3] = GLFW_PRESS;
-    if(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-        movements[4] = GLFW_PRESS;
-    if(glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
-        movements[5] = GLFW_PRESS;
-    
-    camera.keyboardprocess(movements, deltaTime, cameraSpeed);
-}
-
-void mousecallback(GLFWwindow *window, double xpos, double ypos) {
-    if (firstMouse || f11pressed) {
-        lastX = xpos;
-        lastY = ypos;
-        firstMouse = false;
-    }
-
-    float xoffset = xpos - lastX;
-    float yoffset = lastY - ypos;
-    lastX = xpos;
-    lastY = ypos;
-
-    camera.mouseprocess(xoffset, yoffset, GL_TRUE);
-    
-}
-
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
-{
-    fov -= (float)yoffset;
-    if (fov < 1.0f)
-        fov = 1.0f;
-    if (fov > 90.0f)
-        fov = 90.0f;
-}
-
-float vertices[] = {
-    // positions          // normals           // texture coords
-    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f, 1.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f, 0.0f,
-
-    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   1.0f, 1.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f,  0.0f, 1.0f,   0.0f, 0.0f,
-
-    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-
-     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f, 0.0f,
-
-    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f, 1.0f,
-
-    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
-};
-
-glm::vec3 cubePositions[] = {
-    glm::vec3( 0.0f,  0.0f,  0.0f),
-    glm::vec3( 2.0f,  5.0f, -15.0f),
-    glm::vec3(-1.5f, -2.2f, -2.5f),
-    glm::vec3(-3.8f, -2.0f, -12.3f),
-    glm::vec3( 2.4f, -0.4f, -3.5f),
-    glm::vec3(-1.7f,  3.0f, -7.5f),
-    glm::vec3( 1.3f, -2.0f, -2.5f),
-    glm::vec3( 1.5f,  2.0f, -2.5f),
-    glm::vec3( 1.5f,  0.2f, -1.5f),
-    glm::vec3(-1.3f,  1.0f, -1.5f)
-};
-
-glm::vec3 pointLightPositions[] = {
-    glm::vec3( 0.7f,  0.2f,  2.0f),
-    glm::vec3( 2.3f, -3.3f, -4.0f),
-    glm::vec3(-4.0f,  2.0f, -12.0f),
-    glm::vec3( 0.0f,  0.0f, -3.0f)
-};
-
 int main () {
-
-    if (!glfwInit()) {
-        cout << "Failed to initialize GLFW3.\n";
-        return -1;
-    }
-
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Cornbread Program (press esc to exit)", NULL, NULL);
-
-    if (window == NULL) {
-        cout << "Failed to create GLFW window.\n";
-        glfwTerminate();
-        return -1;
-    }
-
-    glfwMakeContextCurrent(window);
-
-    if (!gladLoadGLLoader( (GLADloadproc)glfwGetProcAddress )) {// casts glfwGetProcAddress from GLFWglproc to GLADloadproc
-        cout << "Failed to initialize GLAD.\n";
-        return -1;
-    }
-
-    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
-    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-
-    glViewport(0,0,WIDTH,HEIGHT);
-    glfwSetWindowPos(window, (mode->width - WIDTH)/2, (mode->height - HEIGHT)/2);
     
-    glEnable(GL_DEPTH_TEST);
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    glfwSetCursorPosCallback(window, mousecallback);
-    glfwSetScrollCallback(window, scroll_callback);
+    GLFWwindow *window;
+    GLFWmonitor *monitor;
+    const GLFWvidmode *mode;
+    if (!setup(window, monitor, mode, WIDTH, HEIGHT, framebuffer_size_callback, mousecallback, scroll_callback)) {
+        cerr << "Failed setup\n";
+    }
 
     VertexBuffer cubebuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
     cubebuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
@@ -236,6 +57,7 @@ int main () {
 
     Shader cubeShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
     Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
+
     unsigned int fpsCounter = 0;
     while(!glfwWindowShouldClose(window)) {
         //yeahhhh deltatime
@@ -336,8 +158,6 @@ int main () {
         cubeShader.setfloat("spotlight.quadratic", 0.032f);
         cubeShader.setfloat("spotlight.innercutoff", glm::cos(glm::radians(12.5f)));
         cubeShader.setfloat("spotlight.outercutoff", glm::cos(glm::radians(15.0f)));    
-
-        
 
         glm::mat4 model = glm::mat4(1.0f);
         cubeShader.setMat4("model", model);
