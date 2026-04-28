@@ -205,3 +205,6 @@ I've created the library for textures now, along with adding some fps indicators
 
 #### April 26
 I don't think I did much today, but I'm going to make a library that can create lights.
+
+#### April 27
+I didn't do much work today, but I'm still thinking of some ideas.
