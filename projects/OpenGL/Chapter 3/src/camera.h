@@ -63,6 +63,7 @@ class Camera {
             position += glm::normalize(right) * cameraSpeed * deltaTime;
         }
         if (movements[3] == GLFW_PRESS) {
+            std::cerr << "pressed, " << glfwGetTime() << "\n";
             position -= glm::normalize(right) * cameraSpeed * deltaTime;
         }
         if (movements[4] == GLFW_PRESS) {

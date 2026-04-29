@@ -51,7 +51,7 @@ void processinput(GLFWwindow *window) {
         cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     */
     //game movement
-    bool movements[6]; //W:0 S:1 A:2 D:3 SPACE:4 CONTROL:5
+    bool movements[6] = {false}; //W:0 S:1 A:2 D:3 SPACE:4 CONTROL:5
     if(glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         movements[0] = GLFW_PRESS;
     if(glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)

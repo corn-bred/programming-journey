@@ -4,6 +4,9 @@
 #include <cmath>
 #include <cstdlib>
 #include <sstream>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include "shaders.h"
 //#include "cubebuffer.h"
 //#include "renderer.h" //broken
@@ -12,6 +15,7 @@
 #include "vertexbuffer.h"
 #include "setup.h"
 #include "data.h"
+#include "light.h"
 
 using namespace std;
 
@@ -39,6 +43,7 @@ int main () {
     const GLFWvidmode *mode;
     if (!setup(window, monitor, mode, WIDTH, HEIGHT, framebuffer_size_callback, mousecallback, scroll_callback)) {
         cerr << "Failed setup\n";
+        return -1;
     }
 
     VertexBuffer cubebuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
@@ -54,22 +59,28 @@ int main () {
     TextureBuffer cratetexturespec("projects/OpenGL/Chapter 3/res/container2_specular.png");
     TextureBuffer cratetexturebump("projects/OpenGL/Chapter 3/res/container2_normal.png");
     TextureBuffer cratetextureambient("projects/OpenGL/Chapter 3/res/container2_ambient.png");
+    
 
     Shader cubeShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
     Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
+    
+    LightHandler lighthandler(1.0f, 0.09f, 0.032f);
 
     unsigned int fpsCounter = 0;
-    while(!glfwWindowShouldClose(window)) {
+
+    while(!glfwWindowShouldClose(window)) {//breaks here
         //yeahhhh deltatime
+        
         float currentframe = glfwGetTime();
         deltaTime = currentframe - lastframe;
         if (floor(currentframe) != floor(lastframe)) {
             stringstream titlestring;
             titlestring << "Cornbread Program (FPS: " << fpsCounter << ")";
-            glfwSetWindowTitle(window, titlestring.str().c_str()); 
-            fpsCounter = 0;
+            //glfwSetWindowTitle(window, titlestring.str().c_str()); 
+            //fpsCounter = 0;
         }
         lastframe = currentframe;  
+        
 
         //lightPos = glm::vec3(sin(currentframe) *2.0f, sin(currentframe*5.0f) *0.2f, -cos(currentframe)*2.0f);
 
@@ -115,38 +126,15 @@ int main () {
         cubeShader.setVec3("sun.ambientStrength", 0.05f, 0.05f, 0.05f);
         cubeShader.setVec3("sun.diffuseStrength", 0.4f, 0.4f, 0.4f);
         cubeShader.setVec3("sun.specularStrength", 0.5f, 0.5f, 0.5f);
+
         // point light 1
-        cubeShader.setVec3("pointLights[0].position", pointLightPositions[0]);
-        cubeShader.setVec3("pointLights[0].ambientStrength", 0.05f, 0.05f, 0.05f);
-        cubeShader.setVec3("pointLights[0].diffuseStrength", 0.8f, 0.8f, 0.8f);
-        cubeShader.setVec3("pointLights[0].specularStrength", 1.0f, 1.0f, 1.0f);
-        cubeShader.setfloat("pointLights[0].constant", 1.0f);
-        cubeShader.setfloat("pointLights[0].linear", 0.09f);
-        cubeShader.setfloat("pointLights[0].quadratic", 0.032f);
+        lighthandler.addLight(pointLightPositions[0], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[0]", &cubeShader);
         // point light 2
-        cubeShader.setVec3("pointLights[1].position", pointLightPositions[1]);
-        cubeShader.setVec3("pointLights[1].ambientStrength", 0.05f, 0.05f, 0.05f);
-        cubeShader.setVec3("pointLights[1].diffuseStrength", 0.8f, 0.8f, 0.8f);
-        cubeShader.setVec3("pointLights[1].specularStrength", 1.0f, 1.0f, 1.0f);
-        cubeShader.setfloat("pointLights[1].constant", 1.0f);
-        cubeShader.setfloat("pointLights[1].linear", 0.09f);
-        cubeShader.setfloat("pointLights[1].quadratic", 0.032f);
+        lighthandler.addLight(pointLightPositions[1], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[1]", &cubeShader);
         // point light 3
-        cubeShader.setVec3("pointLights[2].position", pointLightPositions[2]);
-        cubeShader.setVec3("pointLights[2].ambientStrength", 0.05f, 0.05f, 0.05f);
-        cubeShader.setVec3("pointLights[2].diffuseStrength", 0.8f, 0.8f, 0.8f);
-        cubeShader.setVec3("pointLights[2].specularStrength", 1.0f, 1.0f, 1.0f);
-        cubeShader.setfloat("pointLights[2].constant", 1.0f);
-        cubeShader.setfloat("pointLights[2].linear", 0.09f);
-        cubeShader.setfloat("pointLights[2].quadratic", 0.032f);
+        lighthandler.addLight(pointLightPositions[2], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[2]", &cubeShader);
         // point light 4
-        cubeShader.setVec3("pointLights[3].position", pointLightPositions[3]);
-        cubeShader.setVec3("pointLights[3].ambientStrength", 0.05f, 0.05f, 0.05f);
-        cubeShader.setVec3("pointLights[3].diffuseStrength", 0.8f, 0.8f, 0.8f);
-        cubeShader.setVec3("pointLights[3].specularStrength", 1.0f, 1.0f, 1.0f);
-        cubeShader.setfloat("pointLights[3].constant", 1.0f);
-        cubeShader.setfloat("pointLights[3].linear", 0.09f);
-        cubeShader.setfloat("pointLights[3].quadratic", 0.032f);
+        lighthandler.addLight(pointLightPositions[3], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[3]", &cubeShader);
         // spotLight
         cubeShader.setVec3("spotlight.position", camera.position);
         cubeShader.setVec3("spotlight.direction", camera.front);

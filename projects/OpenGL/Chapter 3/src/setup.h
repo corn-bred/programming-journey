@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 
-int setup(GLFWwindow *window, GLFWmonitor *monitor, const GLFWvidmode *mode, int WIDTH, int HEIGHT, GLFWframebuffersizefun frambuffersizefunction, GLFWcursorposfun cursorposfunction, GLFWscrollfun scrollfunction) {
+bool setup(GLFWwindow *&window, GLFWmonitor *&monitor, const GLFWvidmode *&mode, int WIDTH, int HEIGHT, GLFWframebuffersizefun frambuffersizefunction, GLFWcursorposfun cursorposfunction, GLFWscrollfun scrollfunction) {
     if (!glfwInit()) {
         std::cout << "Failed to initialize GLFW3.\n";
         return 0;
@@ -15,17 +15,18 @@ int setup(GLFWwindow *window, GLFWmonitor *monitor, const GLFWvidmode *mode, int
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     window = glfwCreateWindow(WIDTH, HEIGHT, "Cornbread Program (press esc to exit)", NULL, NULL);
 
-    if (window == NULL) {
+    if (!window) {
         std::cout << "Failed to create GLFW window.\n";
         glfwTerminate();
-        return 0;
+        return false;
     }
 
     glfwMakeContextCurrent(window);
 
     if (!gladLoadGLLoader( (GLADloadproc)glfwGetProcAddress )) {// casts glfwGetProcAddress from GLFWglproc to GLADloadproc
         std::cout << "Failed to initialize GLAD.\n";
-        return 0;
+        glfwTerminate();
+        return false;
     }
 
     monitor = glfwGetPrimaryMonitor();
@@ -40,5 +41,5 @@ int setup(GLFWwindow *window, GLFWmonitor *monitor, const GLFWvidmode *mode, int
     glfwSetFramebufferSizeCallback(window, frambuffersizefunction);
     glfwSetCursorPosCallback(window, cursorposfunction);
     glfwSetScrollCallback(window, scrollfunction);
-    return 1;
+    return true;
 }

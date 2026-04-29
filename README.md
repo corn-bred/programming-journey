@@ -208,3 +208,13 @@ I don't think I did much today, but I'm going to make a library that can create 
 
 #### April 27
 I didn't do much work today, but I'm still thinking of some ideas.
+
+#### April 28
+Finished, don't have much time to do it since my computer shuts down at 10 now.
+
+#### April 29
+
+Well, that's strange. The FPS counter that updates every second is somehow activating the third element in my keymap array, making the camera move in the left axis for 1 frame. What did I do in the memory?
+
+UPDATE:
+Wow, I'm so smart. Why did I think that variables would initialize to something? I'm redoing my keymap. I kept the garbage values that were probably used by the stringstream operation, and thought array element 3 was true.
