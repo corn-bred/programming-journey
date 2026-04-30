@@ -12,7 +12,7 @@
 //#include "renderer.h" //broken
 #include "camera.h"
 #include "texturebuffer.h"
-#include "vertexbuffer.h"
+#include "buffer.h"
 #include "setup.h"
 #include "data.h"
 #include "light.h"

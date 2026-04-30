@@ -217,7 +217,12 @@ Finished, don't have much time to do it since my computer shuts down at 10 now.
 Well, that's strange. The FPS counter that updates every second is somehow activating the third element in my keymap array, making the camera move in the left axis for 1 frame. What did I do in the memory?
 
 UPDATE:
-Wow, I'm so smart. Why did I think that variables would initialize to something? I'm redoing my keymap. I kept the garbage values that were probably used by the stringstream operation, and thought array element 3 was true.
+Wow, I'm so smart. Why did I think that variables would initialize to something? I kept the garbage values that were probably used by the stringstream operation, and thought array element 3 was true.
 
 UPDATE 2:
 I added some more stuff and I think I'm finally finished cleaning up the code. I'll continue assimp tomorrow.
+
+
+#### April 30
+
+I added the Mesh class. I can't work much today, because I need to study for a test and also do some school projects.
