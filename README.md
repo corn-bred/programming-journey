@@ -218,3 +218,6 @@ Well, that's strange. The FPS counter that updates every second is somehow activ
 
 UPDATE:
 Wow, I'm so smart. Why did I think that variables would initialize to something? I'm redoing my keymap. I kept the garbage values that were probably used by the stringstream operation, and thought array element 3 was true.
+
+UPDATE 2:
+I added some more stuff and I think I'm finally finished cleaning up the code. I'll continue assimp tomorrow.

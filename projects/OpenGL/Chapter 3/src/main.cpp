@@ -52,7 +52,7 @@ int main () {
     cubebuffer.addAttribute(2, 8, 2, GL_FLOAT, sizeof(float), 6);
 
     VertexBuffer lightbuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
-    cubebuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
+    lightbuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
     
     //RenderHandler renderer(600, 800, "Cornbread Program (Press esc to exit)", framebuffer_size_callback, mousecallback, scroll_callback, files);
     TextureBuffer cratetexture("projects/OpenGL/Chapter 3/res/container2.png");
@@ -68,7 +68,7 @@ int main () {
 
     unsigned int fpsCounter = 0;
 
-    while(!glfwWindowShouldClose(window)) {//breaks here
+    while(!glfwWindowShouldClose(window)) {
         //yeahhhh deltatime
         
         float currentframe = glfwGetTime();
@@ -76,13 +76,10 @@ int main () {
         if (floor(currentframe) != floor(lastframe)) {
             stringstream titlestring;
             titlestring << "Cornbread Program (FPS: " << fpsCounter << ")";
-            //glfwSetWindowTitle(window, titlestring.str().c_str()); 
-            //fpsCounter = 0;
+            glfwSetWindowTitle(window, titlestring.str().c_str()); 
+            fpsCounter = 0;
         }
         lastframe = currentframe;  
-        
-
-        //lightPos = glm::vec3(sin(currentframe) *2.0f, sin(currentframe*5.0f) *0.2f, -cos(currentframe)*2.0f);
 
         processinput(window);
 
@@ -95,23 +92,13 @@ int main () {
 
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        //glBindTexture(GL_TEXTURE_2D, renderer.textures[0]);
 
         cubeShader.use();
         cubeShader.setVec3("material.specularStrength", 0.5f, 0.5f, 0.5f);
-
-        float lightstrength = 3.0f;
-        cubeShader.setVec3("light.ambientStrength",  0.2f, 0.2f, 0.2f);
-        cubeShader.setVec3("light.diffuseStrength",  0.5f*lightstrength, 0.5f*lightstrength, 0.5f*lightstrength);
-        cubeShader.setVec3("light.specularStrength", 1.0f*lightstrength, 1.0f*lightstrength, 1.0f*lightstrength); 
-
         cubeShader.setfloat("material.shininess", 32.0f);
         cubeShader.setfloat("material.bumpstrength", 10.5f);
 
         cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-
-        //cubeShader.setVec3("lightColor",  1.0f, 1.0f, 1.0f);
-        cubeShader.setVec3("lightPos", camera.position);
 
         cubeShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
         cubeShader.setVec3("viewPos", camera.position);
@@ -122,10 +109,7 @@ int main () {
 
         cubeShader.setint("material.normalmap", 3);
 
-        cubeShader.setVec3("sun.direction", -0.2f, -1.0f, -0.3f);
-        cubeShader.setVec3("sun.ambientStrength", 0.05f, 0.05f, 0.05f);
-        cubeShader.setVec3("sun.diffuseStrength", 0.4f, 0.4f, 0.4f);
-        cubeShader.setVec3("sun.specularStrength", 0.5f, 0.5f, 0.5f);
+        lighthandler.addSun(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.05f), glm::vec3(0.4f), glm::vec3(0.5f), "sun", &cubeShader);
 
         // point light 1
         lighthandler.addLight(pointLightPositions[0], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[0]", &cubeShader);
@@ -136,30 +120,11 @@ int main () {
         // point light 4
         lighthandler.addLight(pointLightPositions[3], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[3]", &cubeShader);
         // spotLight
-        cubeShader.setVec3("spotlight.position", camera.position);
-        cubeShader.setVec3("spotlight.direction", camera.front);
-        cubeShader.setVec3("spotlight.ambientStrength", 0.0f, 0.0f, 0.0f);
-        cubeShader.setVec3("spotlight.diffuseStrength", 1.0f, 1.0f, 1.0f);
-        cubeShader.setVec3("spotlight.specularStrength", 1.0f, 1.0f, 1.0f);
-        cubeShader.setfloat("spotlight.constant", 1.0f);
-        cubeShader.setfloat("spotlight.linear", 0.09f);
-        cubeShader.setfloat("spotlight.quadratic", 0.032f);
-        cubeShader.setfloat("spotlight.innercutoff", glm::cos(glm::radians(12.5f)));
-        cubeShader.setfloat("spotlight.outercutoff", glm::cos(glm::radians(15.0f)));    
+        lighthandler.addSpotlight(camera.position, camera.front, glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(1.0f), 12.5f, 15.0f, "spotlight", &cubeShader);
 
-        glm::mat4 model = glm::mat4(1.0f);
-        cubeShader.setMat4("model", model);
         cubeShader.setMat4("projection", projection);
         cubeShader.setMat4("view", view);
 
-        /*glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, cratetexture); //texture colour
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, cratetexturespec); //speculation
-        glActiveTexture(GL_TEXTURE2);
-        glBindTexture(GL_TEXTURE_2D, cratetextureambient); //ambience
-        glActiveTexture(GL_TEXTURE3);
-        glBindTexture(GL_TEXTURE_2D, cratetexturebump); //bump*/
         cratetexture.bindTexture();
         cratetexturespec.bindTexture();
         cratetextureambient.bindTexture();
@@ -175,16 +140,18 @@ int main () {
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
-        /*lightingShader.use();
+        lightingShader.use();
+        lightbuffer.bind();
         lightingShader.setMat4("projection", projection);
         lightingShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, lightPos);
-        model = glm::scale(model, glm::vec3(0.2f));
-        lightingShader.setMat4("model", model);
+        for (int i = 0; i < 4; i++) {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, pointLightPositions[i]);
+            model = glm::scale(model, glm::vec3(0.2f));
+            lightingShader.setMat4("model", model);
+            glDrawArrays(GL_TRIANGLES, 0, 36);
+        }
 
-        glBindVertexArray(lightingVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);*/
         glBindVertexArray(0);
 
         fpsCounter++;

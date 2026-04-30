@@ -8,7 +8,7 @@ in vec2 TexCoords;
 
 uniform vec3 objectColor;
 uniform vec3 lightColor;
-uniform vec3 lightPos;
+//uniform vec3 lightPos;
 uniform vec3 viewPos;
 
 struct Material {
@@ -123,7 +123,7 @@ void main() {
 }
 
 vec3 calculateLightPoint(LightPoint light, vec3 norm, vec3 FragPos, vec3 viewDir) {
-    vec3 lightDir = normalize(lightPos - FragPos); 
+    vec3 lightDir = normalize(light.position - FragPos); 
 
     float dist = length(light.position - FragPos);
     float attenuation = 1.0f / (light.constant + light.linear * dist + light.quadratic * (dist*dist) );
