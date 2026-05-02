@@ -226,3 +226,7 @@ I added some more stuff and I think I'm finally finished cleaning up the code. I
 #### April 30
 
 I added the Mesh class. I can't work much today, because I need to study for a test and also do some school projects.
+
+#### May 1
+
+I added the Model class. I'll dive deeper into its meaning tomorrow and implement the obj actually load, along with adding my own libraries to the files.

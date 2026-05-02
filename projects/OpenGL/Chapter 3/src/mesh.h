@@ -11,12 +11,13 @@
 struct Vertex {
     glm::vec3 Position;
     glm::vec3 Normal;
-    glm::vec3 TexCoords;
+    glm::vec2 TexCoords;
 };
 
 struct Texture {
     GLuint ID;
     std::string type;
+    std::string path;
 };
 
 class Mesh {
@@ -80,4 +81,5 @@ class Mesh {
     Mesh(std::vector<Vertex> Vertices, std::vector<unsigned int> Indices, std::vector<Texture> Textures) : vertices(Vertices), indices(Indices), textures(Textures){
         setupMesh();
     }
+
 };
