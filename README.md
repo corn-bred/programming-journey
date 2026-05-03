@@ -230,3 +230,7 @@ I added the Mesh class. I can't work much today, because I need to study for a t
 #### May 1
 
 I added the Model class. I'll dive deeper into its meaning tomorrow and implement the obj actually load, along with adding my own libraries to the files.
+
+#### May 2
+
+Understood a bit more about the assimp library. I couldn't work today, since I've been outside for almost the entire day today.
