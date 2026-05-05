@@ -1,3 +1,4 @@
+#pragma once
 /* stb_image - v2.30 - public domain image loader - http://nothings.org/stb
                                   no warranty implied; use at your own risk
 
@@ -128,6 +129,7 @@ RECENT REVISION HISTORY:
 
 #ifndef STBI_INCLUDE_STB_IMAGE_H
 #define STBI_INCLUDE_STB_IMAGE_H
+
 
 // DOCUMENTATION
 //

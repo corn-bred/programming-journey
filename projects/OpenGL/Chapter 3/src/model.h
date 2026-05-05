@@ -11,7 +11,7 @@
 
 #include "mesh.h"
 #include "shaders.h"
-#include "texturebuffer.h"
+//#include "texturebuffer.h"
 
 #include <string>
 #include <fstream>
@@ -25,7 +25,7 @@ class Model {
     std::vector<Texture> textures_loaded;
 
     public:
-        Model(char *path) {
+        Model(const char *path) {
             loadModel(path);
         }
         void Draw(Shader &shader) {
@@ -55,7 +55,7 @@ class Model {
 
             for (unsigned int i = 0; i < node->mNumMeshes; i++) {
                 aiMesh *mesh = scene->mMeshes[node->mMeshes[i]]; 
-                meshes.push_back(processMesh(mesh, scene));			
+                meshes.push_back(processMesh(mesh, scene));
             }
             
             for (unsigned int i = 0; i < node->mNumChildren; i++) {

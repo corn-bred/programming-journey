@@ -234,3 +234,7 @@ I added the Model class. I'll dive deeper into its meaning tomorrow and implemen
 #### May 2
 
 Understood a bit more about the assimp library. I couldn't work today, since I've been outside for almost the entire day today.
+
+#### May 4
+
+Ughhh... I hate the new restriction. I keep on getting cut off on my work time. It's still broken.
