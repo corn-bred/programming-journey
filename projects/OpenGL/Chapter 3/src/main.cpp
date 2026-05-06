@@ -39,13 +39,15 @@ Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 int main () {
-    
+    cout << "Starting...\n";
     GLFWwindow *window;
     GLFWmonitor *monitor;
     const GLFWvidmode *mode;
     if (!setup(window, monitor, mode, WIDTH, HEIGHT, framebuffer_size_callback, mousecallback, scroll_callback)) {
         cerr << "Failed setup\n";
         return -1;
+    } else {
+        cout << "Setup succeeded\n";
     }
 
     /*VertexBuffer cubebuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
@@ -114,15 +116,15 @@ int main () {
         //lighthandler.addSun(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.05f), glm::vec3(0.4f), glm::vec3(0.5f), "sun", &backpackShader);
 
         // point light 1
-        lighthandler.addLight(pointLightPositions[0], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[0]", &backpackShader);
+        //lighthandler.addLight(pointLightPositions[0], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[0]", &backpackShader);
         // point light 2
-        lighthandler.addLight(pointLightPositions[1], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[1]", &backpackShader);
+        //lighthandler.addLight(pointLightPositions[1], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[1]", &backpackShader);
         // point light 3
-        lighthandler.addLight(pointLightPositions[2], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[2]", &backpackShader);
+        //lighthandler.addLight(pointLightPositions[2], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[2]", &backpackShader);
         // point light 4
-        lighthandler.addLight(pointLightPositions[3], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[3]", &backpackShader);
+        //lighthandler.addLight(pointLightPositions[3], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[3]", &backpackShader);
         // spotLight
-        lighthandler.addSpotlight(camera.position, camera.front, glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(1.0f), 12.5f, 15.0f, "spotlight", &backpackShader);
+        lighthandler.addSpotlight(camera.position, camera.front, glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(1.0f), 5.0f, 5.0f, "spotlight", &backpackShader);
 
         backpackShader.setMat4("projection", projection);
         backpackShader.setMat4("view", view);
@@ -133,7 +135,7 @@ int main () {
         backpackShader.setMat4("model", model);
         backpack.Draw(backpackShader);
 
-        lightingShader.use();
+        /*lightingShader.use();
         lightbuffer.bind();
         lightingShader.setMat4("projection", projection);
         lightingShader.setMat4("view", view);
@@ -143,7 +145,7 @@ int main () {
             model = glm::scale(model, glm::vec3(0.2f));
             lightingShader.setMat4("model", model);
             glDrawArrays(GL_TRIANGLES, 0, 36);
-        }
+        }*/
 
         glBindVertexArray(0);
 

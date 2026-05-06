@@ -242,3 +242,27 @@ Ughhh... I hate the new restriction. I keep on getting cut off on my work time. 
 #### May 5
 
 Yes! It finally worked! I was using &vertices and &indices instead of the actual .data(). Finally... I also almost completely understand how Assimp works and what are inside the files.
+
+#### May 6
+
+Now that I'm apparently doing "Advanced OpenGL", I'm going to start writing down the concepts of them in here. I also added MSAA to the rendering, but nothing special.
+
+Oh yeah, I think I'm gonna make Releases of the certain things I'm proud of. I think I'm gonna start with the already made .zip files I made before. I'm also gonna make one for the custom model loader.
+
+##### Depth Testing
+If you don't remember, there we a ```glEnableDepth()``` function in setup that correctly layers objects in the z-axis. It's like putting sheets of paper in an order that actually makes sense. You also need to clear the Depth buffer every frame with ```glClear()```. 
+Okay, so technically, it checks every fragment given to the function and it passes based on the inequality it has with a certain depth value. 
+In special cases, you want to disable editing the depth buffer and basically lock the layers in place even though if they move. That function will be called ```glDepthMask()``` and setting it to ```GL_FALSE``` will make the buffer unwritable. 
+You can also use functions to edit the inequality of the Depth Test, which is edited by the function ```glDepthFunc()```.
+A list of all the enumerations it can take as an argument:
+- `GL_ALWAYS`: Always will pass the depth test, layers will be in the order it was rendered in pipeline (I think)
+- `GL_NEVER`: Never passes the depth test, nothing will show up 
+- `GL_EQUAL`: Only passes if the fragment depth is exactly the depth value
+- `GL_NOTEQUAL`: Only passes if the fragment depth isn't the depth value
+- `GL_LESS`: Only passes if the fragment depth is less than the depth value. This is the default that lets you see the "normal" rendering.
+- `GL_LEQUAL`: Only passes if the fragment depth is less than or equal to the depth value
+- `GL_GREATER`: Only passes if the fragment depth is greater than the depth value
+- `GL_GEQUAL`: Only passes if the fragment depth is greater than or equal to the depth value
+
+Now, there is another question. How does the buffer store the distances? It can't just store the actual data, which could go into very far. It would have to use larger byte sizes for a single pixel, in which there are normally 1920x1080 in size, which is a crazy amount of pixels. So, instead, computers input the float between 0 - 1 that is tells you the percentage of how close it is to the far face of your projection frustum (your camera). For example:
+If the near frustum is 0m and the far frustum is 1 km, and the pixel is 600 m away from the camera, then the value stored will be 0.6. However, without some optimizations, turning the distance into a float is almost useless. Now, the solution is to think of it like an LOD optimization. The farther something is, the less detail it needs to have. This creates a ```log()``` type function, where the farther it is, the less it travels each distance step. I don't really know how to explain this, but at least I understand now.

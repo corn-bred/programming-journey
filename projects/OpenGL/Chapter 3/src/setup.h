@@ -13,6 +13,8 @@ bool setup(GLFWwindow *&window, GLFWmonitor *&monitor, const GLFWvidmode *&mode,
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_SAMPLES, 4);
+
     window = glfwCreateWindow(WIDTH, HEIGHT, "Cornbread Program (press esc to exit)", NULL, NULL);
 
     if (!window) {
@@ -36,6 +38,9 @@ bool setup(GLFWwindow *&window, GLFWmonitor *&monitor, const GLFWvidmode *&mode,
     glfwSetWindowPos(window, (mode->width - WIDTH)/2, (mode->height - HEIGHT)/2);
     
     glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_MULTISAMPLE);
+
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     glfwSetFramebufferSizeCallback(window, frambuffersizefunction);
