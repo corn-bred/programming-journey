@@ -173,7 +173,7 @@ vec3 calculateLightSpotlight(LightSpotlight light, vec3 norm, vec3 fragPos, vec3
         float dist = length(light.position - FragPos);
         float attenuation = 1.0f / (light.constant + light.linear * dist + light.quadratic * (dist*dist) );
 
-        vec3 ambient = material.ambientStrength, TexCoords * light.ambientStrength;
+        vec3 ambient = material.ambientStrength * light.ambientStrength;
 
         float diff = max(dot(norm, lightDir), 0.0);
         vec3 diffuse = diff * (light.diffuseStrength * texture(material.texture_diffuse1, TexCoords).rgb);

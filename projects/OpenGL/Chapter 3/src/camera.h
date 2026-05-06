@@ -76,7 +76,7 @@ class Camera {
     
 
     void mouseprocess(float xoffset, float yoffset, GLboolean constrainPitch = true) {
-        const float sensitivity = 0.1f;
+        const float sensitivity = 0.2f;
 
         xoffset *= sensitivity;
         yoffset *= sensitivity;

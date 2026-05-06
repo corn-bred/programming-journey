@@ -111,7 +111,7 @@ int main () {
         backpackShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
         backpackShader.setVec3("viewPos", camera.position);
 
-        lighthandler.addSun(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.05f), glm::vec3(0.4f), glm::vec3(0.5f), "sun", &backpackShader);
+        //lighthandler.addSun(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.05f), glm::vec3(0.4f), glm::vec3(0.5f), "sun", &backpackShader);
 
         // point light 1
         lighthandler.addLight(pointLightPositions[0], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[0]", &backpackShader);
@@ -127,17 +127,12 @@ int main () {
         backpackShader.setMat4("projection", projection);
         backpackShader.setMat4("view", view);
 
-        //cratetexture.bindTexture(0);
-        //cratetexturespec.bindTexture(1);
-        //cratetextureambient.bindTexture(2);
-        //cratetexturebump.bindTexture(3);
-
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
         model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
         backpackShader.setMat4("model", model);
         backpack.Draw(backpackShader);
-        /*
+
         lightingShader.use();
         lightbuffer.bind();
         lightingShader.setMat4("projection", projection);
@@ -148,7 +143,7 @@ int main () {
             model = glm::scale(model, glm::vec3(0.2f));
             lightingShader.setMat4("model", model);
             glDrawArrays(GL_TRIANGLES, 0, 36);
-        }*/
+        }
 
         glBindVertexArray(0);
 

@@ -238,3 +238,7 @@ Understood a bit more about the assimp library. I couldn't work today, since I'v
 #### May 4
 
 Ughhh... I hate the new restriction. I keep on getting cut off on my work time. It's still broken.
+
+#### May 5
+
+Yes! It finally worked! I was using &vertices and &indices instead of the actual .data(). Finally... I also almost completely understand how Assimp works and what are inside the files.
