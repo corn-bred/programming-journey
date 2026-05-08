@@ -77,6 +77,10 @@ int main () {
     Model backpack("projects/OpenGL/Chapter 3/res/backpack.obj"); 
 
     while(!glfwWindowShouldClose(window)) {
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+        glStencilMask(0x00);
+
         //yeahhhh deltatime
         
         float currentframe = glfwGetTime();
@@ -97,9 +101,6 @@ int main () {
         camera.updateCamera();
         
         glm::mat4 view = camera.calculateView();
-
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         backpackShader.use();
         backpackShader.setVec3("material.specularStrength", 0.5f, 0.5f, 0.5f);

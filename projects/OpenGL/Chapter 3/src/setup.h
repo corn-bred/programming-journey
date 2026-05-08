@@ -38,8 +38,9 @@ bool setup(GLFWwindow *&window, GLFWmonitor *&monitor, const GLFWvidmode *&mode,
     glfwSetWindowPos(window, (mode->width - WIDTH)/2, (mode->height - HEIGHT)/2);
     
     glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
     glEnable(GL_MULTISAMPLE);
+    glEnable(GL_STENCIL_TEST);
+    
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 

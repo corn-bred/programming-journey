@@ -266,3 +266,25 @@ A list of all the enumerations it can take as an argument:
 
 Now, there is another question. How does the buffer store the distances? It can't just store the actual data, which could go into very far. It would have to use larger byte sizes for a single pixel, in which there are normally 1920x1080 in size, which is a crazy amount of pixels. So, instead, computers input the float between 0 - 1 that is tells you the percentage of how close it is to the far face of your projection frustum (your camera). For example:
 If the near frustum is 0m and the far frustum is 1 km, and the pixel is 600 m away from the camera, then the value stored will be 0.6. However, without some optimizations, turning the distance into a float is almost useless. Now, the solution is to think of it like an LOD optimization. The farther something is, the less detail it needs to have. This creates a ```log()``` type function, where the farther it is, the less it travels each distance step. I don't really know how to explain this, but at least I understand now.
+
+#### May 7
+
+I understood most of stencil testing but I haven't implemented stuff myself yet. I just wanted to rewrite this in my own words for now, and implement tomorrow.
+
+##### Stencil Testing
+Stencil testing is basically when you apply a mask over your render, like a stencil (Hence the name) and was made to basically be able to use multiples renders and stack them on top of each other and cut bits off for each layer. It's used for things like shadows and outline rendering.
+Of course, you enable it with ```glEnable(GL_STENCIL_TEST)``` and clear the buffer every loop. You can control the strength of the stencil writing with the ```glStencilMask()``` and with a hexadecimal argument.
+
+And, of course, there's a ```glStencilFunc``` that behaves just like ```glDepthFunc()```, except for a few more arguments it can take. It has the regular inequalities that you should probably already know, but now you get to control the number it compares it to and the transparency of the mask (which is just the ```glStencilMask()``` function). This leaves the function with arguments ```glDepthFunc(GLenum func, int ref, unsigned int mask)```.
+
+However, ```glDepthFunc()``` doesn't do anything on its own, but just decides whether a fragment fails or passes. Instead, that choice is given to ```glStencilOp()```. It contains 3 ```GLenum``` arguments: `sfail`, `dpfail`, and `dppass`. `sfail` is when the stencil fails. `dpfail` is when the depth fails but the stencil passes (Although the variable name just states the depth fails, you should assume the stencil passes), and `dppass` means both buffers pass. 
+
+Below are all the enums that are valid in these arguments:
+- `GL_KEEP`: Keeps the value as is.
+- `GL_ZERO`: Sets the value to 0 (transparent).
+- `GL_REPLACE`: Replaces the value to the reference value (or the `ref` variable) given by the ```glDepthFunc()```
+- `GL_INVERT`: Inverts the value.
+- `GL_INCR`: Increments the value by 1 unless it's already fully saturated.
+- `GL_INCR_WRAP`: Does the same thing as `GL_INCR` but instead of not doing anything when fully saturated, you loop around like the modulo function, so it becomes 0.
+- `GL_DECR`: Decrements the value by 1 unless it's already 0.
+- `GL_DECR_WRAP`: Does the same thing as `GL_DECR` but instead of not doing anything when 0, you loop around like the modulo function, so it becomes the highest saturation.
