@@ -288,3 +288,7 @@ Below are all the enums that are valid in these arguments:
 - `GL_INCR_WRAP`: Does the same thing as `GL_INCR` but instead of not doing anything when fully saturated, you loop around like the modulo function, so it becomes 0.
 - `GL_DECR`: Decrements the value by 1 unless it's already 0.
 - `GL_DECR_WRAP`: Does the same thing as `GL_DECR` but instead of not doing anything when 0, you loop around like the modulo function, so it becomes the highest saturation.
+
+#### May 8
+
+I didn't do much today. I had class and extracurriculars, so I only implemented the stencil outline.

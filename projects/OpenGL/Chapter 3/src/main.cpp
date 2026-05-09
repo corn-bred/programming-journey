@@ -50,23 +50,12 @@ int main () {
         cout << "Setup succeeded\n";
     }
 
-    /*VertexBuffer cubebuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
-    cubebuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
-    cubebuffer.addAttribute(1, 8, 3, GL_FLOAT, sizeof(float), 3);
-    cubebuffer.addAttribute(2, 8, 2, GL_FLOAT, sizeof(float), 6);*/
-
     VertexBuffer lightbuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
     lightbuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
-    
-    //RenderHandler renderer(600, 800, "Cornbread Program (Press esc to exit)", framebuffer_size_callback, mousecallback, scroll_callback, files);
-    //TextureBuffer cratetexture("projects/OpenGL/Chapter 3/res/container2.png");
-    //TextureBuffer cratetexturespec("projects/OpenGL/Chapter 3/res/container2_specular.png");
-    //TextureBuffer cratetexturebump("projects/OpenGL/Chapter 3/res/container2_normal.png");
-    //TextureBuffer cratetextureambient("projects/OpenGL/Chapter 3/res/container2_ambient.png");
-    
 
     Shader backpackShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
     Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
+    Shader stencilShader("projects/OpenGL/Chapter 3/src/shaders/vertStencil.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragStencil.glsl");
     
     LightHandler lighthandler(1.0f, 0.09f, 0.032f);
 
@@ -79,7 +68,7 @@ int main () {
     while(!glfwWindowShouldClose(window)) {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-        glStencilMask(0x00);
+        glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
         //yeahhhh deltatime
         
@@ -101,7 +90,9 @@ int main () {
         camera.updateCamera();
         
         glm::mat4 view = camera.calculateView();
-
+        
+        glStencilFunc(GL_ALWAYS, 1, 0xFF);
+        glStencilMask(0xFF);
         backpackShader.use();
         backpackShader.setVec3("material.specularStrength", 0.5f, 0.5f, 0.5f);
         backpackShader.setVec3("material.diffuseStrength", 0.5f, 0.5f, 0.5f);
@@ -131,10 +122,23 @@ int main () {
         backpackShader.setMat4("view", view);
 
         glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
-        model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
         backpackShader.setMat4("model", model);
         backpack.Draw(backpackShader);
+
+        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+        glStencilMask(0x00);
+        glDisable(GL_DEPTH_TEST);
+        stencilShader.use();
+        stencilShader.setMat4("projection", projection);
+        stencilShader.setMat4("view", view);
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(0.0f));
+        model = glm::scale(model, glm::vec3(1.1f));
+        stencilShader.setMat4("model", model);
+        backpack.Draw(stencilShader);
+        glStencilMask(0xFF);
+        glStencilFunc(GL_ALWAYS, 0, 0xFF);
+        glEnable(GL_DEPTH_TEST);
 
         /*lightingShader.use();
         lightbuffer.bind();
