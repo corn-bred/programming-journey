@@ -292,3 +292,7 @@ Below are all the enums that are valid in these arguments:
 #### May 8
 
 I didn't do much today. I had class and extracurriculars, so I only implemented the stencil outline.
+
+#### May 9
+
+I went to the mall today to get stuff and had class today, but I did read about colour blending and I think I understand it mostly. I'll write about it tomorrow (if I have time).
