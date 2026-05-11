@@ -296,3 +296,7 @@ I didn't do much today. I had class and extracurriculars, so I only implemented 
 #### May 9
 
 I went to the mall today to get stuff and had class today, but I did read about colour blending and I think I understand it mostly. I'll write about it tomorrow (if I have time).
+
+#### May 10
+
+So... I've broken something and I keep on getting Error 1282. I don't know where it happens but I've been debugging it for almost 2 hours now, so I think I'll continue tomorrow.

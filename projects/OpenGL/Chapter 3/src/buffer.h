@@ -11,8 +11,10 @@ class VertexBuffer {
     VertexBuffer(const void *Data, GLsizeiptr Size, GLenum drawtype) : data(Data), size(Size) {
         glGenVertexArrays(1, &VAO);
         glGenBuffers(1, &VBO);
+        glBindVertexArray(VAO);
         glBindBuffer(GL_ARRAY_BUFFER, VBO);
         glBufferData(GL_ARRAY_BUFFER, size, data, drawtype);
+        glBindVertexArray(0);
     }
 
     ~VertexBuffer() {

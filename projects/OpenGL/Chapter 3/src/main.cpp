@@ -52,10 +52,17 @@ int main () {
 
     VertexBuffer lightbuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
     lightbuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
+    
 
     Shader backpackShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
     Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
     Shader stencilShader("projects/OpenGL/Chapter 3/src/shaders/vertStencil.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragStencil.glsl");
+
+    Shader blendingShader("projects/OpenGL/Chapter 3/src/shaders/vertBlending.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragBlending");
+    VertexBuffer grassbuffer(transparentVertices, sizeof(transparentVertices), GL_STATIC_DRAW);
+    grassbuffer.addAttribute(0, 5, 3, GL_FLOAT, sizeof(float), 0);
+    grassbuffer.addAttribute(1, 5, 2, GL_FLOAT, sizeof(float), 2);
+    TextureBuffer grassTexture("projects/OpenGL/Chapter 3/res/grass.png", GL_RGBA);
     
     LightHandler lighthandler(1.0f, 0.09f, 0.032f);
 
@@ -65,7 +72,12 @@ int main () {
 
     Model backpack("projects/OpenGL/Chapter 3/res/backpack.obj"); 
 
+
+
+
     while(!glfwWindowShouldClose(window)) {
+        GLenum err;
+        
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
         glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
@@ -80,7 +92,8 @@ int main () {
             glfwSetWindowTitle(window, titlestring.str().c_str()); 
             fpsCounter = 0;
         }
-        lastframe = currentframe;  
+        lastframe = currentframe;
+        
 
         processinput(window);
 
@@ -91,8 +104,9 @@ int main () {
         
         glm::mat4 view = camera.calculateView();
         
-        glStencilFunc(GL_ALWAYS, 1, 0xFF);
-        glStencilMask(0xFF);
+        //glStencilFunc(GL_ALWAYS, 1, 0xFF);
+        //glStencilMask(0xFF);
+
         backpackShader.use();
         backpackShader.setVec3("material.specularStrength", 0.5f, 0.5f, 0.5f);
         backpackShader.setVec3("material.diffuseStrength", 0.5f, 0.5f, 0.5f);
@@ -104,6 +118,12 @@ int main () {
 
         backpackShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
         backpackShader.setVec3("viewPos", camera.position);
+        backpackShader.setMat4("projection", projection);
+        backpackShader.setMat4("view", view);
+
+        glm::mat4 model = glm::mat4(1.0f);
+        backpackShader.setMat4("model", model);
+        //backpack.Draw(backpackShader);
 
         //lighthandler.addSun(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.05f), glm::vec3(0.4f), glm::vec3(0.5f), "sun", &backpackShader);
 
@@ -118,14 +138,9 @@ int main () {
         // spotLight
         lighthandler.addSpotlight(camera.position, camera.front, glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(1.0f), 5.0f, 5.0f, "spotlight", &backpackShader);
 
-        backpackShader.setMat4("projection", projection);
-        backpackShader.setMat4("view", view);
+        
 
-        glm::mat4 model = glm::mat4(1.0f);
-        backpackShader.setMat4("model", model);
-        backpack.Draw(backpackShader);
-
-        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+        /*glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
         glStencilMask(0x00);
         glDisable(GL_DEPTH_TEST);
         stencilShader.use();
@@ -138,7 +153,25 @@ int main () {
         backpack.Draw(stencilShader);
         glStencilMask(0xFF);
         glStencilFunc(GL_ALWAYS, 0, 0xFF);
-        glEnable(GL_DEPTH_TEST);
+        glEnable(GL_DEPTH_TEST); */
+        
+        blendingShader.use();
+        grassbuffer.bind();
+        while ((err = glGetError()) != GL_NO_ERROR && fpsCounter == 0) {
+            cerr << "OpenGL error: " << err << endl;
+        }
+        blendingShader.setMat4("projection", projection);
+        blendingShader.setMat4("view", view);
+        blendingShader.setint("texture", 0);
+        
+        grassTexture.bindTexture(0);
+        
+        for (int i = 0; i < vegetation.size(); i++) {
+            glm::mat4 model = glm::mat4(1.0f);
+            model = glm::translate(model, vegetation[i]);
+            blendingShader.setMat4("model", model);
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+        }
 
         /*lightingShader.use();
         lightbuffer.bind();
