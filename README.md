@@ -300,3 +300,7 @@ I went to the mall today to get stuff and had class today, but I did read about 
 #### May 10
 
 So... I've broken something and I keep on getting Error 1282. I don't know where it happens but I've been debugging it for almost 2 hours now, so I think I'll continue tomorrow.
+
+#### May 11
+
+I made another dumb mistake. I forgot to add the .glsl extension to the `vertStencil.glsl` argument. Now, I think the texture handler isn't correctly handling the .png file, so it's not rendering correctly.

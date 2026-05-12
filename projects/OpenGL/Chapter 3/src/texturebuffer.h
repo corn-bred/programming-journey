@@ -33,7 +33,7 @@ class TextureBuffer {
     }
 
     void bindTexture(unsigned int ID) {
-        glBindTexture(GL_TEXTURE_2D, texture);
         glActiveTexture(GL_TEXTURE0 + ID);
+        glBindTexture(GL_TEXTURE_2D, texture);
     }
 };

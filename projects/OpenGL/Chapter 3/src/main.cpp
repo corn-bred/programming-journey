@@ -54,11 +54,11 @@ int main () {
     lightbuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
     
 
-    Shader backpackShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
-    Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
-    Shader stencilShader("projects/OpenGL/Chapter 3/src/shaders/vertStencil.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragStencil.glsl");
+    //Shader backpackShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
+    //Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
+    //Shader stencilShader("projects/OpenGL/Chapter 3/src/shaders/vertStencil.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragStencil.glsl");
 
-    Shader blendingShader("projects/OpenGL/Chapter 3/src/shaders/vertBlending.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragBlending");
+    Shader blendingShader("projects/OpenGL/Chapter 3/src/shaders/vertBlending.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragBlending.glsl");
     VertexBuffer grassbuffer(transparentVertices, sizeof(transparentVertices), GL_STATIC_DRAW);
     grassbuffer.addAttribute(0, 5, 3, GL_FLOAT, sizeof(float), 0);
     grassbuffer.addAttribute(1, 5, 2, GL_FLOAT, sizeof(float), 2);
@@ -71,6 +71,10 @@ int main () {
     stbi_set_flip_vertically_on_load(true);
 
     Model backpack("projects/OpenGL/Chapter 3/res/backpack.obj"); 
+
+    std::cout << "VAO ID: " << grassbuffer.VAO << std::endl;
+    std::cout << "VBO ID: " << grassbuffer.VBO << std::endl;
+    std::cout << "Shader ID: " << blendingShader.ID << std::endl;
 
 
 
@@ -107,7 +111,7 @@ int main () {
         //glStencilFunc(GL_ALWAYS, 1, 0xFF);
         //glStencilMask(0xFF);
 
-        backpackShader.use();
+        /*backpackShader.use();
         backpackShader.setVec3("material.specularStrength", 0.5f, 0.5f, 0.5f);
         backpackShader.setVec3("material.diffuseStrength", 0.5f, 0.5f, 0.5f);
         backpackShader.setVec3("material.specularStrength", 0.5f, 0.5f, 0.5f);
@@ -122,7 +126,7 @@ int main () {
         backpackShader.setMat4("view", view);
 
         glm::mat4 model = glm::mat4(1.0f);
-        backpackShader.setMat4("model", model);
+        backpackShader.setMat4("model", model);*/
         //backpack.Draw(backpackShader);
 
         //lighthandler.addSun(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.05f), glm::vec3(0.4f), glm::vec3(0.5f), "sun", &backpackShader);
@@ -136,7 +140,7 @@ int main () {
         // point light 4
         //lighthandler.addLight(pointLightPositions[3], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[3]", &backpackShader);
         // spotLight
-        lighthandler.addSpotlight(camera.position, camera.front, glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(1.0f), 5.0f, 5.0f, "spotlight", &backpackShader);
+        lighthandler.addSpotlight(camera.position, camera.front, glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(1.0f), 5.0f, 5.0f, "spotlight", &blendingShader);
 
         
 
@@ -157,15 +161,11 @@ int main () {
         
         blendingShader.use();
         grassbuffer.bind();
-        while ((err = glGetError()) != GL_NO_ERROR && fpsCounter == 0) {
-            cerr << "OpenGL error: " << err << endl;
-        }
         blendingShader.setMat4("projection", projection);
         blendingShader.setMat4("view", view);
-        blendingShader.setint("texture", 0);
+        blendingShader.setint("Texture", 0);
         
         grassTexture.bindTexture(0);
-        
         for (int i = 0; i < vegetation.size(); i++) {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, vegetation[i]);
