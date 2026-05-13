@@ -41,6 +41,7 @@ bool setup(GLFWwindow *&window, GLFWmonitor *&monitor, const GLFWvidmode *&mode,
     glEnable(GL_MULTISAMPLE);
     glEnable(GL_STENCIL_TEST);
     
+    
 
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 

@@ -56,13 +56,13 @@ class Model {
         }
 
         void processNode(aiNode *node, const aiScene *scene) {
-            cerr << "Processing meshes in scene...\n";
+            //cerr << "Processing meshes in scene...\n";
             for (unsigned int i = 0; i < node->mNumMeshes; i++) {
                 aiMesh *mesh = scene->mMeshes[node->mMeshes[i]]; 
                 meshes.push_back(processMesh(mesh, scene));
                 //cerr << "Mesh returned successfully.\n";
             }
-            cerr << "Meshes processed. Processing the nodes...\n";
+            //cerr << "Meshes processed. Processing the nodes...\n";
             
             for (unsigned int i = 0; i < node->mNumChildren; i++) {
                 processNode(node->mChildren[i], scene);
@@ -111,7 +111,7 @@ class Model {
                     for (unsigned int j = 0; j < face.mNumIndices; j++)
                         indices.push_back(face.mIndices[j]);
             }  
-            cerr << "Texture creation\n";
+            //cerr << "Texture creation\n";
             //// process material
             //cerr << "Material processing...\n";
             if(mesh->mMaterialIndex >= 0) {

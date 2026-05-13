@@ -61,14 +61,14 @@ int main () {
     Shader blendingShader("projects/OpenGL/Chapter 3/src/shaders/vertBlending.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragBlending.glsl");
     VertexBuffer grassbuffer(transparentVertices, sizeof(transparentVertices), GL_STATIC_DRAW);
     grassbuffer.addAttribute(0, 5, 3, GL_FLOAT, sizeof(float), 0);
-    grassbuffer.addAttribute(1, 5, 2, GL_FLOAT, sizeof(float), 2);
+    grassbuffer.addAttribute(1, 5, 2, GL_FLOAT, sizeof(float), 3);
     TextureBuffer grassTexture("projects/OpenGL/Chapter 3/res/grass.png", GL_RGBA);
     
     LightHandler lighthandler(1.0f, 0.09f, 0.032f);
 
     unsigned int fpsCounter = 0;
 
-    stbi_set_flip_vertically_on_load(true);
+    
 
     Model backpack("projects/OpenGL/Chapter 3/res/backpack.obj"); 
 

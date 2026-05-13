@@ -304,3 +304,7 @@ So... I've broken something and I keep on getting Error 1282. I don't know where
 #### May 11
 
 I made another dumb mistake. I forgot to add the .glsl extension to the `vertStencil.glsl` argument. Now, I think the texture handler isn't correctly handling the .png file, so it's not rendering correctly.
+
+#### May 12
+
+Another dumb mistake. I made attribute 1 for the VAO start reading from the Z axis instead of the S axis for textures. Now it works.
