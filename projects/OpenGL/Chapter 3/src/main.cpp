@@ -62,7 +62,7 @@ int main () {
     VertexBuffer grassbuffer(transparentVertices, sizeof(transparentVertices), GL_STATIC_DRAW);
     grassbuffer.addAttribute(0, 5, 3, GL_FLOAT, sizeof(float), 0);
     grassbuffer.addAttribute(1, 5, 2, GL_FLOAT, sizeof(float), 3);
-    TextureBuffer grassTexture("projects/OpenGL/Chapter 3/res/grass.png", GL_RGBA);
+    TextureBuffer grassTexture("projects/OpenGL/Chapter 3/res/blending_transparent_window.png", GL_RGBA);
     
     LightHandler lighthandler(1.0f, 0.09f, 0.032f);
 
@@ -158,6 +158,12 @@ int main () {
         glStencilMask(0xFF);
         glStencilFunc(GL_ALWAYS, 0, 0xFF);
         glEnable(GL_DEPTH_TEST); */
+
+        std::map<float, glm::vec3> sorted;
+        for (unsigned int i = 0; i < vegetation.size(); i++) {
+            float distance = glm::length(camera.position - vegetation[i]);
+            sorted[distance] = vegetation[i];
+        }
         
         blendingShader.use();
         grassbuffer.bind();
@@ -166,9 +172,9 @@ int main () {
         blendingShader.setint("Texture", 0);
         
         grassTexture.bindTexture(0);
-        for (int i = 0; i < vegetation.size(); i++) {
+        for (std::map<float, glm::vec3>::reverse_iterator it = sorted.rbegin(); it != sorted.rend(); ++it) {
             glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, vegetation[i]);
+            model = glm::translate(model, it->second);
             blendingShader.setMat4("model", model);
             glDrawArrays(GL_TRIANGLES, 0, 6);
         }

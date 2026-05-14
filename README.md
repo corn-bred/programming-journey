@@ -308,3 +308,46 @@ I made another dumb mistake. I forgot to add the .glsl extension to the `vertSte
 #### May 12
 
 Another dumb mistake. I made attribute 1 for the VAO start reading from the Z axis instead of the S axis for textures. Now it works.
+
+#### May 13
+
+Finally! I finished the Blending chapter and I can now move on.
+
+##### Blending
+
+Blending is basically what will happen when you put a semi-transparent colour `( 0 > .a < 1 )` and finding the colour that it creates. It does it by combining the colours like overriding the colour behind with a percentage. Think of the alpha being a percentage instead of a float (eg. 0.34 = 34%).
+
+The formula for this is:
+$C_1$: Colour in front of the affected object (always semi-transparent)
+$A_1$: Alpha of $C_1$
+$C_2$: Colour of the affected object
+$A_2$: Alpha of $C_2$
+
+$$(C_1 \cdot A_1)+ (C_2 \cdot (1 - A_1))$$
+
+For example, take a front value `vec4(1.0, 0.2, 0.0, 0.3)` and a back value `vec4(0.3, 1.0, 1.0, 0.7)`. You would calculate the following:
+$$ \begin{pmatrix} 1 \\ 0.2 \\ 0 \\ 0.3 \end{pmatrix} \cdot 0.3 + \begin{pmatrix} 0.3 \\ 1 \\ 1 \\ 0.7 \end{pmatrix} \cdot (1-0.3) = \begin{pmatrix} 0.3 \\ 0.06 \\ 0 \\ 0.09 \end{pmatrix}+\begin{pmatrix} 0.21 \\ 0.7 \\ 0.7 \\ 0.49 \end{pmatrix} = \begin{pmatrix} 0.51 \\ 0.76 \\ 0.7 \\ 0.58 \end{pmatrix}$$
+
+There is also another function that determines the alpha of both the source and the destination vectors. It's called `glBlendFunc(GLenum sfactor, GLenum dfactor)`, and for each argument, you specify what you're going to use as the alphas.
+
+Notice how the multipler is always the alpha of the source ($0.3$) and the rest of the percentage ($1 - 0.3 = 0.7$). How do you usually put in as the arguments `sfactor` and `dfactor`? Well, you may notice that the source alpha is the same, but the destination alpha is dependant on the source's. This means that you would put `GL_SRC_ALPHA` and `GL_ONE_MINUS_SRC_ALPHA` as them respectively. 
+
+Here is a list of enumerations you can put as an argument for these:
+
+- `GL_ZERO`: Sets to zero
+- `GL_ONE`: Sets to one
+- `GL_SRC_COLOR`: Sets to source colour
+- `GL_ONE_MINUS_SRC_COLOR`: Sets to the leftover percentage of source colour
+- `GL_DST_COLOR`: Sets to destination colour
+- `GL_ONE_MINUS_DST_COLOR`: Sets to the leftover percentage of destination colour
+- `GL_SRC_ALPHA`: Sets to source alpha
+- `GL_ONE_MINUS_SRC_ALPHA`: Sets to the leftover percentage of source alpha
+- `GL_DST_ALPHA`: Sets to destination alpha
+- `GL_ONE_MINUS_DST_ALPHA`: Sets to the leftover percentage of destination alpha
+- `GL_CONSTANT_COLOR`: Sets to the constant colour
+- `GL_ONE_MINUS_CONSTANT_COLOR`: Sets to the leftover percentage of constant colour
+- `GL_CONSTANT_ALPHA`: Sets to the constant alpha
+- `GL_ONE_MINUS_CONSTANT_ALPHA`: Sets to the leftover percentage of constant alpha
+
+The constant colour is defined by `glBlendColor()`.
+You can individually affect the colour with `glBlendFuncSeparate()`.
