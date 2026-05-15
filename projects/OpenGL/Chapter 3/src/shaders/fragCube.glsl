@@ -89,7 +89,7 @@ void main() {
 
     vec3 Result = calculateLightSpotlight(spotlight, norm, FragPos, viewDir);
 
-    FragColor = vec4(Result, 1.0f);  
+    FragColor = vec4(TexCoords.x, TexCoords.y, 0.0, 1.0);
 }
 
 vec3 calculateLightPoint(LightPoint light, vec3 norm, vec3 FragPos, vec3 viewDir) {
