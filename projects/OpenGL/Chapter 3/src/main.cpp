@@ -68,7 +68,7 @@ int main () {
 
     unsigned int fpsCounter = 0;
 
-    
+    stbi_set_flip_vertically_on_load(true);
 
     Model backpack("projects/OpenGL/Chapter 3/res/backpack.obj"); 
 
