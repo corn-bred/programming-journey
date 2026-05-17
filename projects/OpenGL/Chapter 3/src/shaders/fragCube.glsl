@@ -82,11 +82,6 @@ void main() {
 
     vec3 viewDir = normalize(viewPos - FragPos);
 
-    //vec3 Result = calculateLightSun(sun, norm, viewDir);
-    
-    for(int i = 0; i < NR_POINT_LIGHTS; i++) {}
-        //Result += calculateLightPoint(pointLights[i], norm, FragPos, viewDir);
-
     vec3 Result = calculateLightSpotlight(spotlight, norm, FragPos, viewDir);
 
     FragColor = vec4(Result, 1.0);

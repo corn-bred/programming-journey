@@ -57,12 +57,6 @@ int main () {
     Shader backpackShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
     Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
     Shader stencilShader("projects/OpenGL/Chapter 3/src/shaders/vertStencil.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragStencil.glsl");
-
-    //Shader blendingShader("projects/OpenGL/Chapter 3/src/shaders/vertBlending.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragBlending.glsl");
-    //VertexBuffer grassbuffer(transparentVertices, sizeof(transparentVertices), GL_STATIC_DRAW);
-    //grassbuffer.addAttribute(0, 5, 3, GL_FLOAT, sizeof(float), 0);
-    //grassbuffer.addAttribute(1, 5, 2, GL_FLOAT, sizeof(float), 3);
-    //TextureBuffer grassTexture("projects/OpenGL/Chapter 3/res/blending_transparent_window.png", GL_RGBA);
     
     LightHandler lighthandler(1.0f, 0.09f, 0.032f);
 
@@ -107,33 +101,18 @@ int main () {
         camera.updateCamera();
         
         glm::mat4 view = camera.calculateView();
-        
-        //glStencilFunc(GL_ALWAYS, 1, 0xFF);
-        //glStencilMask(0xFF);
 
         backpackShader.use();
         backpackShader.setVec3("material.specularStrength", 0.5f, 0.5f, 0.5f);
         backpackShader.setVec3("material.diffuseStrength", 0.5f, 0.5f, 0.5f);
         backpackShader.setVec3("material.specularStrength", 0.5f, 0.5f, 0.5f);
         backpackShader.setfloat("material.shininess", 32.0f);
-        //backpackShader.setfloat("material.bumpstrength", 10.5f);
 
         backpackShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
 
         backpackShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
         backpackShader.setVec3("viewPos", camera.position);
         
-        //lighthandler.addSun(glm::vec3(-0.2f, -1.0f, -0.3f), glm::vec3(0.05f), glm::vec3(0.4f), glm::vec3(0.5f), "sun", &backpackShader);
-
-        // point light 1
-        //lighthandler.addLight(pointLightPositions[0], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[0]", &backpackShader);
-        // point light 2
-        //lighthandler.addLight(pointLightPositions[1], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[1]", &backpackShader);
-        // point light 3
-        //lighthandler.addLight(pointLightPositions[2], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[2]", &backpackShader);
-        // point light 4
-        //lighthandler.addLight(pointLightPositions[3], glm::vec3(0.05f, 0.05f, 0.05f), glm::vec3(0.8f, 0.8f, 0.8f), glm::vec3(1.0f, 1.0f, 1.0f), "pointLights[3]", &backpackShader);
-        // spotLight
         lighthandler.addSpotlight(camera.position, camera.front, glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(1.0f), 5.0f, 5.0f, "spotlight", &backpackShader);
 
         backpackShader.setMat4("projection", projection);
@@ -141,41 +120,6 @@ int main () {
         glm::mat4 model = glm::mat4(1.0f);
         backpackShader.setMat4("model", model);
         backpack.Draw(backpackShader);
-
-        /*glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
-        glStencilMask(0x00);
-        glDisable(GL_DEPTH_TEST);
-        stencilShader.use();
-        stencilShader.setMat4("projection", projection);
-        stencilShader.setMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f));
-        model = glm::scale(model, glm::vec3(1.1f));
-        stencilShader.setMat4("model", model);
-        backpack.Draw(stencilShader);
-        glStencilMask(0xFF);
-        glStencilFunc(GL_ALWAYS, 0, 0xFF);
-        glEnable(GL_DEPTH_TEST); */
-
-        /*std::map<float, glm::vec3> sorted;
-        for (unsigned int i = 0; i < vegetation.size(); i++) {
-            float distance = glm::length(camera.position - vegetation[i]);
-            sorted[distance] = vegetation[i];
-        }
-        
-        blendingShader.use();
-        grassbuffer.bind();
-        blendingShader.setMat4("projection", projection);
-        blendingShader.setMat4("view", view);
-        blendingShader.setint("Texture", 0);
-        
-        grassTexture.bindTexture(0);
-        for (std::map<float, glm::vec3>::reverse_iterator it = sorted.rbegin(); it != sorted.rend(); ++it) {
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, it->second);
-            blendingShader.setMat4("model", model);
-            glDrawArrays(GL_TRIANGLES, 0, 6);
-        }*/
 
         /*lightingShader.use();
         lightbuffer.bind();
