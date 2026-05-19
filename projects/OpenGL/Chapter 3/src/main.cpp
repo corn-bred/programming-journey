@@ -45,40 +45,71 @@ int main () {
     const GLFWvidmode *mode;
     if (!setup(window, monitor, mode, WIDTH, HEIGHT, framebuffer_size_callback, mousecallback, scroll_callback)) {
         cerr << "Failed setup\n";
-        return -1;
+        return EXIT_FAILURE;
     } else {
         cout << "Setup succeeded\n";
     }
 
-    VertexBuffer lightbuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
-    lightbuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
-    
-
     Shader backpackShader("projects/OpenGL/Chapter 3/src/shaders/vertCube.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragCube.glsl");
     Shader lightingShader("projects/OpenGL/Chapter 3/src/shaders/vertLighting.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragLighting.glsl");
-    Shader stencilShader("projects/OpenGL/Chapter 3/src/shaders/vertStencil.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragStencil.glsl");
+    
     
     LightHandler lighthandler(1.0f, 0.09f, 0.032f);
 
     unsigned int fpsCounter = 0;
 
     stbi_set_flip_vertically_on_load(true);
-
     Model backpack("projects/OpenGL/Chapter 3/res/backpack.obj"); 
 
-    //std::cout << "VAO ID: " << grassbuffer.VAO << std::endl;
-    //std::cout << "VBO ID: " << grassbuffer.VBO << std::endl;
-    //std::cout << "Shader ID: " << blendingShader.ID << std::endl;
+    VertexBuffer lightbuffer(vertices, sizeof(vertices), GL_STATIC_DRAW);
+    lightbuffer.addAttribute(0, 8, 3, GL_FLOAT, sizeof(float), 0);
 
+    VertexBuffer quadbuffer(quadVertices, sizeof(quadVertices), GL_STATIC_DRAW);
+    quadbuffer.addAttribute(0, 4, 2, GL_FLOAT, sizeof(float), 0);
+    quadbuffer.addAttribute(1, 4, 2, GL_FLOAT, sizeof(float), 2);
 
+    Shader screenShader("projects/OpenGL/Chapter 3/src/shaders/vertFBO.glsl", "projects/OpenGL/Chapter 3/src/shaders/fragFBO.glsl");
 
+    GLuint framebuffer;
+    glGenFramebuffers(1, &framebuffer);
+    glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+
+    GLuint texturecolourbuffer;
+    glGenTextures(1, &texturecolourbuffer);
+    glBindTexture(GL_TEXTURE_2D, texturecolourbuffer);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, WIDTH, HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texturecolourbuffer, 0);
+
+    GLuint RBOtexture;
+    glGenTextures(1, &RBOtexture);
+    glBindTexture(GL_TEXTURE_2D, RBOtexture);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, WIDTH, HEIGHT, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, nullptr);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, RBOtexture, 0);
+
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) { //check if framebuffer requirements are fufilled
+        cerr << "ERROR: Framebuffer not complete!\n";
+        return EXIT_FAILURE;
+    }
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     while(!glfwWindowShouldClose(window)) {
         GLenum err;
+
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
         
+        glEnable(GL_DEPTH_TEST);
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-        //glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         //yeahhhh deltatime
         
@@ -132,6 +163,22 @@ int main () {
             lightingShader.setMat4("model", model);
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }*/
+        glDisable(GL_DEPTH_TEST);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        glClearColor(1.0f, 1.0f, 1.0f, 1.0f); //sets background to white
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        screenShader.use();
+        screenShader.setint("screenTexture", 0);
+        screenShader.setint("depstenTexture", 1);
+        screenShader.setfloat("aTime", currentframe);
+        quadbuffer.bind();
+
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texturecolourbuffer);
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, RBOtexture);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
 
         glBindVertexArray(0);
 
@@ -140,7 +187,8 @@ int main () {
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
-    
+    glDeleteFramebuffers(1, &framebuffer);
+    glDeleteTextures(1, &RBOtexture);
     glfwTerminate();
-    return 0;
+    return EXIT_SUCCESS;
 }

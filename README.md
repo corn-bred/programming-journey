@@ -381,3 +381,7 @@ However, OpenGL doesn't know whether a face is facing towards us or not. We can 
 For example, you could tell OpenGL that a "front facing" face is when the vertices are winded counter-clockwise, and then tell it to remove the faces that are facing front of the camera. This removes all front faces and only renders the faces facing away.
 
 In code, you enable face culling with `GL_CULL_FACE` and `glEnable()`, like usual. Then, you specify what a front facing triangle's winding order is with `glFrontFace()`, in which the argument is either `GL_CW` (clockwise) or `GL_CCW` (counter-clockwise). Finally, you tell OpenGL to cull either the front-facing triangles or the back-facing ones with `glCullFace()`, in which its argument is either `GL_FRONT` or `GL_BACK`.
+
+#### May 18
+
+Wooahh! I implemented framebuffers and created a glitch effect & a Depth of Field effect! I spent a lot of time doing this today, taking about 4 or 5 hours, but I think it's worth it! Shaders are so cool. I'll explain framebuffers tomorrow.
