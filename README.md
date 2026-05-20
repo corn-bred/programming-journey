@@ -91,6 +91,8 @@ Well... I kinda am getting sidetracked over me trying to learn XML and Lua for a
 
 Oh my god... I got even more sidetracked over studying raytracing and simple arduino. I gotta lock in on the triangle.
 
+#### 2026
+
 #### January 2
 
 Wow, it seems I messed up the code. I need to rewrite the SDL3 pixel drawing. I will need to dig deeper on how my previous code worked.
@@ -419,4 +421,25 @@ Once you have your texture ready for use, you bind it to the framebuffer with `g
 - texture: The actual texture to attach
 - level: Mipmap level of the texture
 
-Keep in mind this is only for texture attachments.
+Keep in mind this is only for texture attachments. For the other type of attachment, it's called a render buffer.
+
+Renderbuffers are attachments that were added as another option other than textures that actually held buffers. OpenGL can do some optimizations that gives an edge to normal textures. However, the disadvantage to this is that it cannot be read directly. You could read it via a slow function called `glReadPixels()`, however.
+
+Creating a renderbuffer is pretty straightforward. First, you generate the buffer with `glGenRenderbuffers()`. Then, you go configure the renderbuffer with the stuff it holds, like depth and stencil buffers.
+
+How do you configure the renderbuffer, however?
+
+First, you just bind it to the current state with `glBindRenderbuffer()`.
+
+Second, you give it storage for it to put stuff in with `glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)`. The `target` for us is what it gets to do with the framebuffer. `internalformat` is the format that OpenGL will use to read and write the information. For example, a format could be the depth buffer, the stencil buffer, or both. (A renderbuffer can be both a stencil and a depth buffer, giving depth 24 bits of info and stencil 8 bits. ) Then, it's the `width` and `height`, which is pretty self-explanatory. It determines the width and height of the buffer(s) it will store.
+
+Third, we actually attach the renderbuffer to the framebuffer with `glFramebufferRenderbuffer()`, which you see is almost the same name as `glFramebufferTexture2D()`.
+The arguments for this function is `glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)`. `target` is the same thing as before, `attachment` is the internal format of the renderbuffer, `renderbuffertarget` is a lot like `target`. It tells OpenGL what it can do to the renderbuffer. Finally, `renderbuffer` is just the ID of the actual renderbuffer.
+
+Now that you know how framebuffers get set up, how do they get used? First, you need a shader that is the same as a simple texture rasterizer. You also need vertices that form a rectangle covering the entire screen.
+
+What you basically do is that you render everything on our own framebuffer instead of the default, which allows us to edit it with shaders. To do that, you bind the framebuffer with `glBindFramebuffer()`. Everything else goes like normal. Then, once you're done with everything, you bind the framebuffer back to default (`0`). Then, you use your screen shader and bind the vertex array. *Remember to disable `GL_DEPTH_TEST` if you do have it enabled.* Also remember to clear buffers. Then, just bind the texture and draw the arrays/elements.
+
+#### May 20
+
+I finished explaining framebuffers. I don't thnk it was very well explained, mind you, but I think it's fine. Also, it seems like I forgot to finish the commit. I just pressed "Commit & Push" and just left it there. I've already done that before.
