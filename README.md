@@ -251,9 +251,12 @@ Oh yeah, I think I'm gonna make Releases of the certain things I'm proud of. I t
 
 ##### Depth Testing
 If you don't remember, there we a ```glEnableDepth()``` function in setup that correctly layers objects in the z-axis. It's like putting sheets of paper in an order that actually makes sense. You also need to clear the Depth buffer every frame with ```glClear()```. 
+
 Okay, so technically, it checks every fragment given to the function and it passes based on the inequality it has with a certain depth value. 
 In special cases, you want to disable editing the depth buffer and basically lock the layers in place even though if they move. That function will be called ```glDepthMask()``` and setting it to ```GL_FALSE``` will make the buffer unwritable. 
+
 You can also use functions to edit the inequality of the Depth Test, which is edited by the function ```glDepthFunc()```.
+
 A list of all the enumerations it can take as an argument:
 - `GL_ALWAYS`: Always will pass the depth test, layers will be in the order it was rendered in pipeline (I think)
 - `GL_NEVER`: Never passes the depth test, nothing will show up 
@@ -265,6 +268,7 @@ A list of all the enumerations it can take as an argument:
 - `GL_GEQUAL`: Only passes if the fragment depth is greater than or equal to the depth value
 
 Now, there is another question. How does the buffer store the distances? It can't just store the actual data, which could go into very far. It would have to use larger byte sizes for a single pixel, in which there are normally 1920x1080 in size, which is a crazy amount of pixels. So, instead, computers input the float between 0 - 1 that is tells you the percentage of how close it is to the far face of your projection frustum (your camera). For example:
+
 If the near frustum is 0m and the far frustum is 1 km, and the pixel is 600 m away from the camera, then the value stored will be 0.6. However, without some optimizations, turning the distance into a float is almost useless. Now, the solution is to think of it like an LOD optimization. The farther something is, the less detail it needs to have. This creates a ```log()``` type function, where the farther it is, the less it travels each distance step. I don't really know how to explain this, but at least I understand now.
 
 #### May 7
@@ -385,3 +389,34 @@ In code, you enable face culling with `GL_CULL_FACE` and `glEnable()`, like usua
 #### May 18
 
 Wooahh! I implemented framebuffers and created a glitch effect & a Depth of Field effect! I spent a lot of time doing this today, taking about 4 or 5 hours, but I think it's worth it! Shaders are so cool. I'll explain framebuffers tomorrow.
+
+#### May 19
+
+Uhhh... I'll continue tomorrow. I didn't get much time today.
+
+##### Framebuffers
+
+Framebuffers are buffers that store all information and buffers about a single frame, like the colour, depth, and stencil buffer. Currently, we use the default framebuffer, in which its ID is 0. OpenGL allows us to create our own framebuffers, making it more flexible and allows us to do stuff like shaders (eg. Glitching, static, vignette, and blurring).
+
+Creating a framebuffer is pretty straightfoward. First, you generate it with `GLuint fbo;` and `glGenFramebuffers(1, &fbo);`. It's pretty much the same as any other buffer. Then, you bind it as the current state with `glBindFramebuffer()`, where its first argument is how the actions after are going to affect the framebuffer. `GL_FRAMEBUFFER` means it can both read and write to the framebuffer, `GL_READ_FRAMEBUFFER` means it can only read from it and cannot write to it, like using function `glDrawArrays()` isn't useable. `GL_DRAW_FRAMEBUFFER` means it can only write to the framebuffer, but not read from it.
+
+Continuing, there are some requirements for a framebuffer to be useable. At least one of the following need to be fufilled:
+- At least one buffer needs to be attached (colour, depth, or stencil)
+- There should be at least one colour attachment
+- All attachments should be complete as well (reserved memory)
+- Each buffer should have the same number of samples (For MSAA)
+Attachments are either textures, or a Renderbuffer, which I'll explain later.
+You should note that anti-aliasing doesn't affect framebuffers unless you tell it to, so just enabling MSAA now won't work.
+
+Once you get one of those attached, you can check whether the buffer is ready by using the function `glCheckFramebufferStatus()` and if it returns `GL_FRAMEBUFFER_COMPLETE`, then it's finished. You should also probably know you need to delete the framebuffer once done with use or destruction via `glDeleteFramebuffers()`, like anything else.
+
+Now, how do you attach something to it? First, I'll explain how to attach a texture. There really isn't much difference than normally making one, except in `glTexImage2D()`, you set the dimensions as the width and height of the screen and the data as `NULL`. Setting data to `NULL` just means no data is automatically written to it, and only memory is allocated for it. Everything else is basically the same.
+
+Once you have your texture ready for use, you bind it to the framebuffer with `glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint *texture, int level)`. Its parameters are:
+- target: the framebuffer type we're targeting (draw, read or both)
+- attachment: the type of attachment we're going to attach
+- textarget: the format of the texture that's going to be attached
+- texture: The actual texture to attach
+- level: Mipmap level of the texture
+
+Keep in mind this is only for texture attachments.

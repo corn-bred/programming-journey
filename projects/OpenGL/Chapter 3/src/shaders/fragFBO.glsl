@@ -22,7 +22,7 @@ float snap(float value, float step) {
 void main()
 {
     
-    float strength = 0.005;
+    float strength = 0.002;
     vec2 cent = vec2(0.5, 0.5);
     vec2 normTexCoords = vec2(TexCoords.x - cent.x, TexCoords.y - cent.y);
     float dist = abs(sqrt(pow((normTexCoords.x), 2) + pow((normTexCoords.y), 2)));
