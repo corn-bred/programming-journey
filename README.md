@@ -443,3 +443,11 @@ What you basically do is that you render everything on our own framebuffer inste
 #### May 20
 
 I finished explaining framebuffers. I don't thnk it was very well explained, mind you, but I think it's fine. Also, it seems like I forgot to finish the commit. I just pressed "Commit & Push" and just left it there. I've already done that before.
+
+#### May 21
+
+I did cubemaps. It took almost 2 hours, but now I'm on writing the explanation. I'll leave the rest for tomorrow.
+
+##### Cubemaps
+
+Cubemaps are essentially used for skyboxes and is basically their entire use. It helps other objects create reflections and refractions that are much simpler than finding reflections object-to-object, so it's more cost-effective than the complex formulae that you have to use otherwise.

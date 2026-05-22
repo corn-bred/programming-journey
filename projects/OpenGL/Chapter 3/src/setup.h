@@ -39,6 +39,8 @@ bool setup(GLFWwindow *&window, GLFWmonitor *&monitor, const GLFWvidmode *&mode,
     glfwSetWindowPos(window, (mode->width - WIDTH)/2, (mode->height - HEIGHT)/2);
     
     glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    
     glEnable(GL_MULTISAMPLE);
 
     glEnable(GL_CULL_FACE);

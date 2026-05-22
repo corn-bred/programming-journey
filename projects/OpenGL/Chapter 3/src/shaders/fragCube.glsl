@@ -6,6 +6,7 @@ in vec3 Normal;
 in vec3 FragPos;
 in vec2 TexCoords;
 
+uniform samplerCube skybox;
 uniform vec3 objectColor;
 uniform vec3 lightColor;
 //uniform vec3 lightPos;
@@ -73,6 +74,8 @@ vec3 calculateLightSun(LightSun light, vec3 norm, vec3 viewDir);
 
 vec3 calculateLightSpotlight(LightSpotlight light, vec3 norm, vec3 fragPos, vec3 viewDir);
 
+vec3 calculateSkyboxReflection(samplerCube skybox, vec3 pos, vec3 cameraPos, vec3 normal, float refraction);
+
 //uniform LightSun sun;
 uniform LightSpotlight spotlight;
 
@@ -82,7 +85,7 @@ void main() {
 
     vec3 viewDir = normalize(viewPos - FragPos);
 
-    vec3 Result = calculateLightSpotlight(spotlight, norm, FragPos, viewDir);
+    vec3 Result = calculateSkyboxReflection(skybox, FragPos, viewPos, Normal, 1.33);
 
     FragColor = vec4(Result, 1.0);
 }
@@ -154,4 +157,11 @@ vec3 calculateLightSpotlight(LightSpotlight light, vec3 norm, vec3 fragPos, vec3
 
         vec3 result = (ambient+diffuse+specular);
         return result;
+}
+
+vec3 calculateSkyboxReflection(samplerCube skybox, vec3 pos, vec3 cameraPos, vec3 normal, float refraction) {
+    float ratio = 1.0 / refraction;
+    vec3 I = normalize(pos - cameraPos);
+    vec3 R = refract(I, normalize(normal), ratio);
+    return vec3(texture(skybox, R).rgb);
 }
