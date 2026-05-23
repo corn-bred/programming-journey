@@ -451,3 +451,7 @@ I did cubemaps. It took almost 2 hours, but now I'm on writing the explanation. 
 ##### Cubemaps
 
 Cubemaps are essentially used for skyboxes and is basically their entire use. It helps other objects create reflections and refractions that are much simpler than finding reflections object-to-object, so it's more cost-effective than the complex formulae that you have to use otherwise.
+
+#### May 22
+
+I did some Blender stuff today for about 2 hours, so I didn't get much work done. Should I add my Blender files here too?
