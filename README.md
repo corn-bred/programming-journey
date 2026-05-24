@@ -452,6 +452,38 @@ I did cubemaps. It took almost 2 hours, but now I'm on writing the explanation. 
 
 Cubemaps are essentially used for skyboxes and is basically their entire use. It helps other objects create reflections and refractions that are much simpler than finding reflections object-to-object, so it's more cost-effective than the complex formulae that you have to use otherwise.
 
+In order to create a cubemap sample (`samplerCube`), it's about the same as a `sampler2D` except you pass 6 textures instead of just one - one for each face. 
+
+First, you generate the texture with `glGenTextures(1, &cubemap)`.
+
+Then, you bind it with `glBindTexture(GL_TEXTURE_CUBEMAP, cubemap)`. This tells OpenGL that it needs to write to the texture like a cubemap and it's also in our current state.
+Then, you start binding each texture with `glTexImage2D()`. However, instead of `GL_TEXTURE_2D`, you give it 1 of the six faces to write to.
+
+You just do the regular thing per side, and each enumeration (From lowest hex definition to highest) is the following:
+
+1. `GL_TEXTURE_CUBE_MAP_POSITIVE_X`: Right
+2. `GL_TEXTURE_CUBE_MAP_NEGATIVE_X`: Left
+3. `GL_TEXTURE_CUBE_MAP_POSITIVE_Y`: Top
+4. `GL_TEXTURE_CUBE_MAP_NEGATIVE_Y`: Bottom
+5. `GL_TEXTURE_CUBE_MAP_NEGATIVE_Z`: Front
+6. `GL_TEXTURE_CUBE_MAP_POSITIVE_Z`: Back
+
+Since each definition is just `GL_TEXTURE_CUBE_MAP_POSITIVE_X` + an offset, you can just create a loop that goes through each one without you having to manually write it.
+
+In the GLSL code, you need to make a new seperate shader that draws before everything. The vertex shader is basically the same, except for the fact that it doesn't need to take the camera position matrix anymore, since it's a skybox. You also need to add a uniform, like `uniform samplerCube skybox`. You can just use `texture()` like a regular texture.
+
+Now, in the actual loop, you bind the texture with `glBindTexture(GL_TEXTURE_CUBEMAP, cubemap)`, and set the uniform to whatever texture ID you set the cubemap to. Then, you just draw the vertex array (which is a cube), and now it's done.
+
 #### May 22
 
-I did some Blender stuff today for about 2 hours, so I didn't get much work done. Should I add my Blender files here too?
+I did some Blender stuff today for about 2 hours, so I didn't get much work done. Should I add my Blender files here too? 
+
+#### May 23
+
+I made a really cool first part of my animation. Sadly, just blocking it out took around 2 hours and making the first second took another 1 hour. I don't know if that's normal, but at least I'm learning.
+![Blender screenshot](img/may22.png)
+Also, I finished my cubemap stuff. I'm going to add more later today, hopefully. However, I do have a school project to do, so maybe not.
+
+##### UPADATE
+
+Hey! My animation actually looks decent! I'm proud of it. It took up almost 5 hours today, but it's fine for the 8 seconds I made.
