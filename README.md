@@ -487,3 +487,27 @@ Also, I finished my cubemap stuff. I'm going to add more later today, hopefully.
 ##### UPADATE
 
 Hey! My animation actually looks decent! I'm proud of it. It took up almost 5 hours today, but it's fine for the 8 seconds I made.
+
+#### May 24
+
+I wrote some stuff. I totally didn't finish 4 minutes before my time ran out.
+
+##### More about buffers and GPU VRAM
+
+There are some more ways to use and write to buffers. For example, you could just write to a single part of a buffer or even acquire a buffer directly from the VRAM (The GPU RAM), giving it the benefit to be able to perform C-style function on it like `memcpy()`.
+
+###### `glBufferSubData()`
+
+`glBufferSubData()` is when you only write data to a smaller chunk of memory into the buffer, and not the whole thing. For example, you want to replace a single vertex, but you have to replace the entire buffer to do so. That would cost a lot of performance. That is where `glBufferSubData()` comes in. It only replaces the parts that need to replace and nothing more.
+
+A requirement for `glBufferSubData()` to run is that the memory needs to be properly initialized, like with `glBufferData()`.
+
+The arguments of `glBufferSubData()` is almost exactly the same as `glBufferData()` except for the fact that it requires the starting point (in bytes). All the arguments are `glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)`.
+
+###### Mapping Buffers
+
+Buffers are pieces of data inside a GPU. Normally, you aren't able to access it normally, like with normal C functions, but if you get its address from a pointer, you could do it. This is where the function `glMapBuffer()` comes in. It directly takes the address of the buffer and lets you use C-style functions on it, like `memcpy()`. The parameters for `glMapBuffer()` are the target `GLenum` and how it's able to be accessed (`GL_WRITE_ONLY`, `GL_READ_ONLY`, `GL_READ_WRITE`). Once you're done with your stuff, you use `glUnmapBuffer(GLenum target)`.
+
+###### Copying Buffers
+
+In order to deep-transfer (Move info without the same addresses) information for buffers, you first need to go through the CPU, then go back to the GPU. This is very costly in performance, which is why `glCopyBufferSubData()` exists. You may be wondering why it's a `Sub`. This is because sometimes you just want to copy part of the buffer, and if you were actually trying to copy the entire thing, GLAD has an edge case for that, in which it will do optimizations so there is no need for just a regular `glCopyBufferData()` without the `Sub`. Its parameters are `glCopyBufferData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)`. `readtarget` and `writetarget` are the targets of the input and the output respectively, like `GL_ARRAY_BUFFER` as the input and `GL_COPY_WRITE_BUFFER` as the output. The `readoffset` and `writeoffset` are the offsets (in bytes) on where it should read and write. Lastly, `size` just defines the range it reads from and how much input it takes in.
