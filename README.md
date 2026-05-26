@@ -526,3 +526,33 @@ In your code, you can set the rendering presets to render something else entirel
 `gl_VertexID` shows the ID of the vertex, and is a read only variable. The ID depends on how you draw the buffer, for example, via `glDrawArrays()` or `glDrawElements()`. With `glDrawArrays()`, it just tells you the order its been rendered, from 0 to whatever number. For example, if a point was the 60th point rendered, its ID would be 59 (Since it starts at 0 and not 1). With `glDrawElements()`, it tells you the index its been rendered. For example, if your point was in the 4th index in your EBO, then the ID would be 3.
 
 ###### Fragment Shaders
+
+- `in highp vec4 gl_FragCoord`
+As you can tell, `gl_FragCoord` are the coordinates of the fragment in 3D space. This includes .x and .y, but also .z (The depth value) and .w (The value for perspective). It's a read-only variable. The units of x and y are in pixel form, like which pixel it is in terms of difference in X and in difference in Y.
+- `in bool gl_FrontFacing`
+This is another pretty self-explanatory one. It tells you whether a face is front-facing or not. Something is considered "front-facing" whether the winding order is clockwise or counter-clockwise. The default is counter-clockwise, but you can define it with `glFrontFace()`, as previously talked about before.
+- `out highp float gl_FragDepth`
+This output variable is just the same as `gl_FragCoord.z`, but you can actually write to it. However, since this is processsed in the fragment shader and not the vertex shader, it's slower and OpenGL has to wait until the shader finishes to render the pixel. 
+Because of this overhead, **in minimum version OpenGL 4.2**, Khronos added an optional specification in the initialization, like: `layout (depth_\<condition\>)` at the start. This allows OpenGL to do something called "Early depth testing", an optimization technique that makes depth tests faster. The condition part can either be 4 things:
+    - `any`: The change will vary either greater, less, or equal to `gl_Position.z`. Depth is unpredictable and early depth test does not happen.
+    - `greater`: The change will be greater than `gl_Position.z`. This tells OpenGL that if the early depth test fails, then the fragment depth test would too, so it's safe to discard it.
+    - `less`: The change will be smaller than `gl_Position.z`. This tells OpenGL that if the early depth test succeeds, then the fragment depth test would too, so it's safe to keep it.
+    - `unchanged`: The change will not differ from `gl_Position.z` and early depth test _will_ be the final test.
+
+###### Interface blocks
+Interface blocks are like namespaces that put your input/output variables in classes. This is important for readability and organization. For example, a `out vec2 TexCoords` would be in the `vs_out` interface block. Usually, an interface block usually looks like this:
+```
+out VS_OUT
+{
+    vec2 TexCoords;
+} vs_out;
+```
+The first line, which is called the "Block name" is the name that OpenGL looks for when it sends/takes the information. It's basically the ID to destinguish itself from the same name, along with the fact that the name on the bottom is able to be switched out per shader file. 
+For example, `out VS_OUT {} vs_out` and `in FS_OUT {} vs_out` are not the same.
+However, `out VS_OUT {} vs_out` and `in VS_OUT {} fs_cout` are.
+The scope in the middle just declare the variables. No need for `out`, `in`, or `uniform`, since the top already defines it.
+The bottom is the "instance name" of the interface. It can vary between shaders, being named over whichever makes sense. 
+
+#### May 26
+
+I spend 1 and a half hours on this. I'll do the rest tomorrow (hopefully).

@@ -50,6 +50,8 @@ bool setup(GLFWwindow *&window, GLFWmonitor *&monitor, const GLFWvidmode *&mode,
     //glEnable(GL_BLEND);
     //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+    glEnable(GL_PROGRAM_POINT_SIZE);
+
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     glfwSetFramebufferSizeCallback(window, frambuffersizefunction);
