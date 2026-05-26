@@ -511,3 +511,18 @@ Buffers are pieces of data inside a GPU. Normally, you aren't able to access it 
 ###### Copying Buffers
 
 In order to deep-transfer (Move info without the same addresses) information for buffers, you first need to go through the CPU, then go back to the GPU. This is very costly in performance, which is why `glCopyBufferSubData()` exists. You may be wondering why it's a `Sub`. This is because sometimes you just want to copy part of the buffer, and if you were actually trying to copy the entire thing, GLAD has an edge case for that, in which it will do optimizations so there is no need for just a regular `glCopyBufferData()` without the `Sub`. Its parameters are `glCopyBufferData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)`. `readtarget` and `writetarget` are the targets of the input and the output respectively, like `GL_ARRAY_BUFFER` as the input and `GL_COPY_WRITE_BUFFER` as the output. The `readoffset` and `writeoffset` are the offsets (in bytes) on where it should read and write. Lastly, `size` just defines the range it reads from and how much input it takes in.
+
+#### May 25
+
+I added some stuff, but not as much as I wanted to.
+
+##### More about GLSL inputs & outputs
+
+###### Vertex Shader
+
+- `out highp float gl_PointSize`
+In your code, you can set the rendering presets to render something else entirely. We've seen this before, where we, instead of draw polygons, we drew wireframely. We can also draw things in points. `glEnable(GL_PROGRAM_POINT_SIZE)` allows us to do exactly that, and `gl_PointSize` helps OpenGL define the size of the point. The colour of the point is based on the colour that the fragment shader gives.
+- `in highp int gl_VertexID`
+`gl_VertexID` shows the ID of the vertex, and is a read only variable. The ID depends on how you draw the buffer, for example, via `glDrawArrays()` or `glDrawElements()`. With `glDrawArrays()`, it just tells you the order its been rendered, from 0 to whatever number. For example, if a point was the 60th point rendered, its ID would be 59 (Since it starts at 0 and not 1). With `glDrawElements()`, it tells you the index its been rendered. For example, if your point was in the 4th index in your EBO, then the ID would be 3.
+
+###### Fragment Shaders

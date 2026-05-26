@@ -186,7 +186,7 @@ int main () {
         backpackShader.setVec3("viewPos", camera.position);
         
         lighthandler.addSpotlight(camera.position, camera.front, glm::vec3(0.0f), glm::vec3(1.0f), glm::vec3(1.0f), 5.0f, 5.0f, "spotlight", &backpackShader);
-
+        
         backpackShader.setMat4("projection", projection);
         backpackShader.setMat4("view", view);
         glm::mat4 model = glm::mat4(1.0f);
