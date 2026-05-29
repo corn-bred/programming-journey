@@ -553,6 +553,27 @@ However, `out VS_OUT {} vs_out` and `in VS_OUT {} fs_cout` are.
 The scope in the middle just declare the variables. No need for `out`, `in`, or `uniform`, since the top already defines it.
 The bottom is the "instance name" of the interface. It can vary between shaders, being named over whichever makes sense. 
 
+###### Uniform Buffer Objects
+
+Whenever you pass data for a uniform variable, there is some overhead where bringing the information happens. Uniform buffer objects solve that problem. The data is always binded with the shader, and you're able to change the information inside it only in chunks and don't have to change the entire thing. 
+
+The first thing you do to make a UBO is to just normally set up the buffer with `GL_UNIFORM_BUFFER`. Then, you allocate the memory needed for the UBO (in which you will have to calculate yourself or using `sizeof()`).
+
+However, there are most likely multiple uniforms in your shader code, so how does OpenGL know which buffer goes to which uniform interface block? This is done by something called binding points. Think of it like an ID the UBO holds in which the code will use to connect. That is done by `glBindBufferBase(GLenum target, GLuint index, GLuint buffer)`. 
+(On a side note, you are also able to seperately bind parts of a single UBO, like for the first 60 bytes, it binds to point 0, but for the rest, it binds to point 1. You're able to do that with `glBindBufferRange(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size)`.)
+
+Inside the GLSL code, you can create a uniform block via `layout(std140) uboNameHere {};`. Notice that there is no name at the bottom and it includes this weird `std140`. That just means that the memory assigned to the UBO must be exactly the memory given for the uniform block.
+
+In order to insert the information you want to put, you either just push it in with `glBufferSubData()`, or you can create a `struct` that perfectly copies your uniform block in code and add an object of that `struct` as your data. This also gives the benefit in which you can just use `sizeof()` for when you use `glBufferData()` to initialize the memory usage. HOWEVER, YOU MUST BE WEARY OF THE PADDING USED IN `std140`. It's slightly different than just copying your normal struct, but you now have to align the bytes correctly.
+
+In order to assign a uniform interface block an ID, you can do either 2 things:
+1. Do the classic way by first finding the index of your uniform interface block. That is done with `glGetUniformBlockIndex()`. The first parameter is the program ID, and the second parameter is the name of the uniform block. Then, after being found, you run `glUniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding)` to assign it a binding point. The first parameter is the same as `glGetUniformBlockIndex()`, but the second parameter is the index that we got from `glGetUniformBlockIndex()`. The third parameter is the binding point to assign it to. Now, you're done. Keep in mind this is a "legacy way" of doing it, but is more compatible than the next way:
+2. In OpenGL 4.2, you could add a second optional parameter inside `layout (std140)`, which is called `binding`, and whichever number you assign it will automatically give the uniform block the binding point.
+
 #### May 26
 
 I spend 1 and a half hours on this. I'll do the rest tomorrow (hopefully).
+
+#### May 28
+
+This is (maybe) accurate. I think I've done enough today.
