@@ -577,3 +577,7 @@ I spend 1 and a half hours on this. I'll do the rest tomorrow (hopefully).
 #### May 28
 
 This is (maybe) accurate. I think I've done enough today.
+
+#### May 29
+
+I'm gonna make a very slow and naive raytracer in another repo for my passion project at school. I hope 2 weeks are enough time for me to be able to do this. I'm still gonna write stuff here, probably about what I made every day.
