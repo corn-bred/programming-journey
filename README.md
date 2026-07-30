@@ -587,3 +587,7 @@ I'm gonna make a very slow and naive raytracer in another repo for my passion pr
 Well, I pretty much finished the raytracer. I wouldn't say it's completely refined yet, but for now it works fine. I think I'll start a game repository to see if my skills are viable for simple games.
 
 My raytracer currently supports spheres and triangles. You can choose the material albedo, roughness, and whether it's metal, dielectric, or an emmissive material. For now, it's running on a framebuffer instead of a compute shader. I'll have to learn about compute shaders later, but for now it works. I probably should convert to a compute shader before I add a Bounding Box Hierarchy.
+
+#### July 30
+
+Pretty late news, but I made a game engine which could handle the most basic stuff. I updated my raytracer so it could have compute shaders and BVH within this month. I also decided I'm going to continue the raytracer after a solid month. I also made a game which I submitted for the GMTK game jam.
