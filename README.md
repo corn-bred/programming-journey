@@ -591,3 +591,7 @@ My raytracer currently supports spheres and triangles. You can choose the materi
 #### July 30
 
 Pretty late news, but I made a game engine which could handle the most basic stuff. I updated my raytracer so it could have compute shaders and BVH within this month. I also decided I'm going to continue the raytracer after a solid month. I also made a game which I submitted for the GMTK game jam.
+
+#### August 25
+
+I made a hybrid renderer which supports the same stuff as before, but it's not comepletely done with a bunch of logical bugs. I dealt with it for a week and I think I'll just shelf the project for now and look at later. For now, I'm gonna study CMake, ImGui, and RenderDoc before school starts.

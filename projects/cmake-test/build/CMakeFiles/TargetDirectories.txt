@@ -1,0 +1,3 @@
+C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/CMakeFiles/main.dir
+C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/CMakeFiles/edit_cache.dir
+C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/CMakeFiles/rebuild_cache.dir
