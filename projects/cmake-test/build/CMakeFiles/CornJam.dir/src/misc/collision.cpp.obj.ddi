@@ -1,0 +1,11 @@
+{
+"rules": [
+{
+"primary-output": "CMakeFiles\\CornJam.dir\\src\\misc\\collision.cpp.obj",
+"requires": [
+]
+}
+],
+"version": 0,
+"revision": 0
+}

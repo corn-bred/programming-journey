@@ -595,3 +595,27 @@ Pretty late news, but I made a game engine which could handle the most basic stu
 #### August 25
 
 I made a hybrid renderer which supports the same stuff as before, but it's not comepletely done with a bunch of logical bugs. I dealt with it for a week and I think I'll just shelf the project for now and look at later. For now, I'm gonna study CMake, ImGui, and RenderDoc before school starts.
+
+#### August 26
+
+I learned the basics of CMake. I think it's much easier to create debug and release builds now, and is more professional and easier to maintain now. I successfully built my CornJam project with CMake without a long g++ command, so I think that's a win.
+I'll write the definitions of some functions I used down here:
+
+##### Required
+- `cmake_minimum_required()` Required version for building.
+- `project()` Sets the project name and the languages.
+##### Core functions
+- `add_executable()` Creates an executable with the selected source files.
+- `target_include_directories()` Sets include folder
+- `target_link_directories()` Sets lib folder
+- `target_link_libraries()` Adds library flags, like as an example, `-lglfw3dll`
+##### Preferences
+- `option()` Creates an option with the prefix `-D` during CMake generation, like if you wanted to add a `STATIC_BUILD` option, you would add the `-DSTATIC_BUILD` flag in your CMake generation command.
+- `set()` Sets a preference
+- `set_target_properties()` Sets the property for a specific target
+##### Good things to know
+###### Conditions
+The if condition works like a definition if in C. 
+- `if ()` Works the same as the starting of an if statement
+- `else()` Works the same as the else statement
+- `endif()` Ends the if statement

@@ -15,7 +15,32 @@ add_executable(${PROJECT_NAME}
     src/misc/utility.cpp 
     src/globals.cpp)
 
-target_include_directories(${PROJECT_NAME} PRIVATE 
-    include/${CMAKE_CURRENT_SOURCE_DIR})
+set_target_properties( ${PROJECT_NAME} PROPERTIES 
+    RUNTIME_OUTPUT_DIRECTORY  ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
-    
+target_include_directories( ${PROJECT_NAME} PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+target_link_directories( ${PROJECT_NAME} PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+
+target_link_libraries( ${PROJECT_NAME} PRIVATE 
+    glfw3 
+    opengl32 
+    gdi32 
+    OpenAL32
+)
+
+option(STATIC_BUILD "Statically build the executable" OFF)
+
+if (STATIC_BUILD)
+    target_link_options ( ${PROJECT_NAME} PRIVATE 
+        -static
+        -static-libgcc 
+        -static-libstdc++
+    )
+    set(CMAKE_FIND_LIBRARY_SUFFIXES .a ${CMAKE_FIND_LIBRARY_SUFFIXES})
+    message(STATUS "Building statically-linked executable")
+else()
+    message(STATUS "Building dynamically-linked executable")
+endif()

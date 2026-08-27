@@ -1,0 +1,15 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles/CornJam.dir/src/main.cpp.obj: dyndep
+
+build CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj: dyndep
+
+build CMakeFiles/CornJam.dir/src/game.cpp.obj: dyndep
+
+build CMakeFiles/CornJam.dir/src/scenes.cpp.obj: dyndep
+
+build CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj: dyndep
+
+build CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj: dyndep
+
+build CMakeFiles/CornJam.dir/src/globals.cpp.obj: dyndep
+

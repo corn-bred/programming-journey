@@ -1,0 +1,60 @@
+{
+	"bmi-installation" : null,
+	"compiler-frontend-variant" : "GNU",
+	"compiler-id" : "GNU",
+	"compiler-simulate-id" : "",
+	"config" : "",
+	"cxx-modules" : {},
+	"database-info" : null,
+	"dir-cur-bld" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build",
+	"dir-cur-src" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test",
+	"dir-top-bld" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build",
+	"dir-top-src" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test",
+	"exports" : [],
+	"forward-modules-from-target-dirs" : [],
+	"include-dirs" : 
+	[
+		"C:\\Users\\maxwo\\programming-journey-2025\\projects\\cmake-test\\include"
+	],
+	"language" : "CXX",
+	"linked-target-dirs" : [],
+	"module-dir" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/CMakeFiles/CornJam.dir",
+	"sources" : 
+	{
+		"CMakeFiles/CornJam.dir/src/game.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/game.cpp"
+		},
+		"CMakeFiles/CornJam.dir/src/globals.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/globals.cpp"
+		},
+		"CMakeFiles/CornJam.dir/src/main.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/main.cpp"
+		},
+		"CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/misc/collision.cpp"
+		},
+		"CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/misc/shaders.cpp"
+		},
+		"CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/misc/utility.cpp"
+		},
+		"CMakeFiles/CornJam.dir/src/scenes.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/scenes.cpp"
+		}
+	}
+}
