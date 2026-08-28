@@ -1,0 +1,3 @@
+[submodule "projects/cmake-test/thirdparty/imgui"]
+	path = projects/cmake-test/thirdparty/imgui
+	url = https://github.com/ocornut/imgui.git
