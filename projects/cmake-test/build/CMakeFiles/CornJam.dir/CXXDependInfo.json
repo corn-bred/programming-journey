@@ -14,13 +14,50 @@
 	"forward-modules-from-target-dirs" : [],
 	"include-dirs" : 
 	[
-		"C:\\Users\\maxwo\\programming-journey-2025\\projects\\cmake-test\\include"
+		"C:\\Users\\maxwo\\programming-journey-2025\\projects\\cmake-test\\include",
+		"_deps\\imgui-src",
+		"_deps\\imgui-src\\backend"
 	],
 	"language" : "CXX",
 	"linked-target-dirs" : [],
 	"module-dir" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/CMakeFiles/CornJam.dir",
 	"sources" : 
 	{
+		"CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_glfw.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backends/imgui_impl_glfw.cpp"
+		},
+		"CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_opengl3.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backends/imgui_impl_opengl3.cpp"
+		},
+		"CMakeFiles/CornJam.dir/_deps/imgui-src/imgui.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui.cpp"
+		},
+		"CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_demo.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_demo.cpp"
+		},
+		"CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_draw.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_draw.cpp"
+		},
+		"CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_tables.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_tables.cpp"
+		},
+		"CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_widgets.cpp.obj" : 
+		{
+			"language" : "CXX",
+			"source" : "C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_widgets.cpp"
+		},
 		"CMakeFiles/CornJam.dir/src/game.cpp.obj" : 
 		{
 			"language" : "CXX",

@@ -45,6 +45,10 @@ class Scene {
 //Custom scenes written below
 
 class PlayingScene : public Scene {
+    float fTemp;
+    bool bTemp;
+    int ModeChoice;
+    bool ButtonState;
     public:
 
     void Init() override;

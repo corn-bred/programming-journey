@@ -619,3 +619,9 @@ The if condition works like a definition if in C.
 - `if ()` Works the same as the starting of an if statement
 - `else()` Works the same as the else statement
 - `endif()` Ends the if statement
+
+#### August 27
+I learned a bit more about the `FetchContent` tool for CMake and added ImGUI to my build. I'll find out how to use it tomorrow.
+
+#### August 28
+I learned the basics of ImGui, like sliders, checkboxes, dropdowns, and buttons. I'll probably add some of this to my path tracer later.

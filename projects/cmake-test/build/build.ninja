@@ -48,7 +48,7 @@ build CMakeFiles/CornJam.dir/src/main.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/
   DEP_FILE = CMakeFiles\CornJam.dir\src\main.cpp.obj.ddi.d
   DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\src\main.cpp.obj.ddi
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJ_FILE = CMakeFiles\CornJam.dir\src\main.cpp.obj
   PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\src\main.cpp.obj.ddi.i
 
@@ -56,26 +56,22 @@ build CMakeFiles/CornJam.dir/src/main.cpp.obj: CXX_COMPILER__CornJam_scanned_ C$
   DEP_FILE = CMakeFiles\CornJam.dir\src\main.cpp.obj.d
   DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\src\main.cpp.obj.modmap
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJECT_DIR = CMakeFiles\CornJam.dir
   OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\CornJam.dir\
-  TARGET_PDB = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.pdb
   dyndep = CMakeFiles/CornJam.dir/CXX.dd
 
 build CMakeFiles/CornJam.dir/src/misc/glad.c.obj: C_COMPILER__CornJam_unscanned_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/misc/glad.c || cmake_object_order_depends_target_CornJam
   DEP_FILE = CMakeFiles\CornJam.dir\src\misc\glad.c.obj.d
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJECT_DIR = CMakeFiles\CornJam.dir
   OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\src\misc
-  TARGET_COMPILE_PDB = CMakeFiles\CornJam.dir\
-  TARGET_PDB = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.pdb
 
 build CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/misc/shaders.cpp || cmake_object_order_depends_target_CornJam
   DEP_FILE = CMakeFiles\CornJam.dir\src\misc\shaders.cpp.obj.ddi.d
   DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\src\misc\shaders.cpp.obj.ddi
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJ_FILE = CMakeFiles\CornJam.dir\src\misc\shaders.cpp.obj
   PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\src\misc\shaders.cpp.obj.ddi.i
 
@@ -83,18 +79,16 @@ build CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj: CXX_COMPILER__CornJam_sca
   DEP_FILE = CMakeFiles\CornJam.dir\src\misc\shaders.cpp.obj.d
   DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\src\misc\shaders.cpp.obj.modmap
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJECT_DIR = CMakeFiles\CornJam.dir
   OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\src\misc
-  TARGET_COMPILE_PDB = CMakeFiles\CornJam.dir\
-  TARGET_PDB = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.pdb
   dyndep = CMakeFiles/CornJam.dir/CXX.dd
 
 build CMakeFiles/CornJam.dir/src/game.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/game.cpp || cmake_object_order_depends_target_CornJam
   DEP_FILE = CMakeFiles\CornJam.dir\src\game.cpp.obj.ddi.d
   DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\src\game.cpp.obj.ddi
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJ_FILE = CMakeFiles\CornJam.dir\src\game.cpp.obj
   PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\src\game.cpp.obj.ddi.i
 
@@ -102,18 +96,16 @@ build CMakeFiles/CornJam.dir/src/game.cpp.obj: CXX_COMPILER__CornJam_scanned_ C$
   DEP_FILE = CMakeFiles\CornJam.dir\src\game.cpp.obj.d
   DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\src\game.cpp.obj.modmap
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJECT_DIR = CMakeFiles\CornJam.dir
   OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\CornJam.dir\
-  TARGET_PDB = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.pdb
   dyndep = CMakeFiles/CornJam.dir/CXX.dd
 
 build CMakeFiles/CornJam.dir/src/scenes.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/scenes.cpp || cmake_object_order_depends_target_CornJam
   DEP_FILE = CMakeFiles\CornJam.dir\src\scenes.cpp.obj.ddi.d
   DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\src\scenes.cpp.obj.ddi
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJ_FILE = CMakeFiles\CornJam.dir\src\scenes.cpp.obj
   PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\src\scenes.cpp.obj.ddi.i
 
@@ -121,18 +113,16 @@ build CMakeFiles/CornJam.dir/src/scenes.cpp.obj: CXX_COMPILER__CornJam_scanned_ 
   DEP_FILE = CMakeFiles\CornJam.dir\src\scenes.cpp.obj.d
   DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\src\scenes.cpp.obj.modmap
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJECT_DIR = CMakeFiles\CornJam.dir
   OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\CornJam.dir\
-  TARGET_PDB = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.pdb
   dyndep = CMakeFiles/CornJam.dir/CXX.dd
 
 build CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/misc/collision.cpp || cmake_object_order_depends_target_CornJam
   DEP_FILE = CMakeFiles\CornJam.dir\src\misc\collision.cpp.obj.ddi.d
   DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\src\misc\collision.cpp.obj.ddi
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJ_FILE = CMakeFiles\CornJam.dir\src\misc\collision.cpp.obj
   PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\src\misc\collision.cpp.obj.ddi.i
 
@@ -140,18 +130,16 @@ build CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj: CXX_COMPILER__CornJam_s
   DEP_FILE = CMakeFiles\CornJam.dir\src\misc\collision.cpp.obj.d
   DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\src\misc\collision.cpp.obj.modmap
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJECT_DIR = CMakeFiles\CornJam.dir
   OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\src\misc
-  TARGET_COMPILE_PDB = CMakeFiles\CornJam.dir\
-  TARGET_PDB = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.pdb
   dyndep = CMakeFiles/CornJam.dir/CXX.dd
 
 build CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/misc/utility.cpp || cmake_object_order_depends_target_CornJam
   DEP_FILE = CMakeFiles\CornJam.dir\src\misc\utility.cpp.obj.ddi.d
   DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\src\misc\utility.cpp.obj.ddi
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJ_FILE = CMakeFiles\CornJam.dir\src\misc\utility.cpp.obj
   PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\src\misc\utility.cpp.obj.ddi.i
 
@@ -159,18 +147,16 @@ build CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj: CXX_COMPILER__CornJam_sca
   DEP_FILE = CMakeFiles\CornJam.dir\src\misc\utility.cpp.obj.d
   DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\src\misc\utility.cpp.obj.modmap
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJECT_DIR = CMakeFiles\CornJam.dir
   OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\src\misc
-  TARGET_COMPILE_PDB = CMakeFiles\CornJam.dir\
-  TARGET_PDB = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.pdb
   dyndep = CMakeFiles/CornJam.dir/CXX.dd
 
 build CMakeFiles/CornJam.dir/src/globals.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/src/globals.cpp || cmake_object_order_depends_target_CornJam
   DEP_FILE = CMakeFiles\CornJam.dir\src\globals.cpp.obj.ddi.d
   DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\src\globals.cpp.obj.ddi
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJ_FILE = CMakeFiles\CornJam.dir\src\globals.cpp.obj
   PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\src\globals.cpp.obj.ddi.i
 
@@ -178,14 +164,131 @@ build CMakeFiles/CornJam.dir/src/globals.cpp.obj: CXX_COMPILER__CornJam_scanned_
   DEP_FILE = CMakeFiles\CornJam.dir\src\globals.cpp.obj.d
   DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\src\globals.cpp.obj.modmap
   FLAGS = -std=gnu++20
-  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
   OBJECT_DIR = CMakeFiles\CornJam.dir
   OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\src
-  TARGET_COMPILE_PDB = CMakeFiles\CornJam.dir\
-  TARGET_PDB = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.pdb
   dyndep = CMakeFiles/CornJam.dir/CXX.dd
 
-build CMakeFiles/CornJam.dir/CXX.dd | C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/CMakeFiles/CornJam.dir/CXXModules.json CMakeFiles/CornJam.dir/src/main.cpp.obj.modmap CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj.modmap CMakeFiles/CornJam.dir/src/game.cpp.obj.modmap CMakeFiles/CornJam.dir/src/scenes.cpp.obj.modmap CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj.modmap CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj.modmap CMakeFiles/CornJam.dir/src/globals.cpp.obj.modmap: CXX_DYNDEP__CornJam_ CMakeFiles/CornJam.dir/src/main.cpp.obj.ddi CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj.ddi CMakeFiles/CornJam.dir/src/game.cpp.obj.ddi CMakeFiles/CornJam.dir/src/scenes.cpp.obj.ddi CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj.ddi CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj.ddi CMakeFiles/CornJam.dir/src/globals.cpp.obj.ddi | C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/CMakeFiles/CornJam.dir/CXXDependInfo.json
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui.cpp || cmake_object_order_depends_target_CornJam
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui.cpp.obj.ddi
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJ_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui.cpp.obj.ddi.i
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui.cpp.obj: CXX_COMPILER__CornJam_scanned_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui.cpp | CMakeFiles/CornJam.dir/_deps/imgui-src/imgui.cpp.obj.modmap || cmake_object_order_depends_target_CornJam CMakeFiles/CornJam.dir/CXX.dd
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui.cpp.obj.modmap
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJECT_DIR = CMakeFiles\CornJam.dir
+  OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\_deps\imgui-src
+  dyndep = CMakeFiles/CornJam.dir/CXX.dd
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_draw.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_draw.cpp || cmake_object_order_depends_target_CornJam
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_draw.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_draw.cpp.obj.ddi
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJ_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_draw.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_draw.cpp.obj.ddi.i
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_draw.cpp.obj: CXX_COMPILER__CornJam_scanned_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_draw.cpp | CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_draw.cpp.obj.modmap || cmake_object_order_depends_target_CornJam CMakeFiles/CornJam.dir/CXX.dd
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_draw.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_draw.cpp.obj.modmap
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJECT_DIR = CMakeFiles\CornJam.dir
+  OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\_deps\imgui-src
+  dyndep = CMakeFiles/CornJam.dir/CXX.dd
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_widgets.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_widgets.cpp || cmake_object_order_depends_target_CornJam
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_widgets.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_widgets.cpp.obj.ddi
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJ_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_widgets.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_widgets.cpp.obj.ddi.i
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_widgets.cpp.obj: CXX_COMPILER__CornJam_scanned_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_widgets.cpp | CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_widgets.cpp.obj.modmap || cmake_object_order_depends_target_CornJam CMakeFiles/CornJam.dir/CXX.dd
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_widgets.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_widgets.cpp.obj.modmap
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJECT_DIR = CMakeFiles\CornJam.dir
+  OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\_deps\imgui-src
+  dyndep = CMakeFiles/CornJam.dir/CXX.dd
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_tables.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_tables.cpp || cmake_object_order_depends_target_CornJam
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_tables.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_tables.cpp.obj.ddi
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJ_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_tables.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_tables.cpp.obj.ddi.i
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_tables.cpp.obj: CXX_COMPILER__CornJam_scanned_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_tables.cpp | CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_tables.cpp.obj.modmap || cmake_object_order_depends_target_CornJam CMakeFiles/CornJam.dir/CXX.dd
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_tables.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_tables.cpp.obj.modmap
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJECT_DIR = CMakeFiles\CornJam.dir
+  OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\_deps\imgui-src
+  dyndep = CMakeFiles/CornJam.dir/CXX.dd
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_demo.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_demo.cpp || cmake_object_order_depends_target_CornJam
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_demo.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_demo.cpp.obj.ddi
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJ_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_demo.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_demo.cpp.obj.ddi.i
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_demo.cpp.obj: CXX_COMPILER__CornJam_scanned_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui_demo.cpp | CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_demo.cpp.obj.modmap || cmake_object_order_depends_target_CornJam CMakeFiles/CornJam.dir/CXX.dd
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_demo.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\imgui_demo.cpp.obj.modmap
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJECT_DIR = CMakeFiles\CornJam.dir
+  OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\_deps\imgui-src
+  dyndep = CMakeFiles/CornJam.dir/CXX.dd
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_glfw.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backends/imgui_impl_glfw.cpp || cmake_object_order_depends_target_CornJam
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_glfw.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_glfw.cpp.obj.ddi
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJ_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_glfw.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_glfw.cpp.obj.ddi.i
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_glfw.cpp.obj: CXX_COMPILER__CornJam_scanned_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backends/imgui_impl_glfw.cpp | CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_glfw.cpp.obj.modmap || cmake_object_order_depends_target_CornJam CMakeFiles/CornJam.dir/CXX.dd
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_glfw.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_glfw.cpp.obj.modmap
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJECT_DIR = CMakeFiles\CornJam.dir
+  OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\_deps\imgui-src\backends
+  dyndep = CMakeFiles/CornJam.dir/CXX.dd
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_opengl3.cpp.obj.ddi: CXX_SCAN__CornJam_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backends/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_CornJam
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_opengl3.cpp.obj.ddi.d
+  DYNDEP_INTERMEDIATE_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_opengl3.cpp.obj.ddi
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJ_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_opengl3.cpp.obj
+  PREPROCESSED_OUTPUT_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_opengl3.cpp.obj.ddi.i
+
+build CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_opengl3.cpp.obj: CXX_COMPILER__CornJam_scanned_ C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backends/imgui_impl_opengl3.cpp | CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_opengl3.cpp.obj.modmap || cmake_object_order_depends_target_CornJam CMakeFiles/CornJam.dir/CXX.dd
+  DEP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_opengl3.cpp.obj.d
+  DYNDEP_MODULE_MAP_FILE = CMakeFiles\CornJam.dir\_deps\imgui-src\backends\imgui_impl_opengl3.cpp.obj.modmap
+  FLAGS = -std=gnu++20
+  INCLUDES = -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/include -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src -IC:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backend
+  OBJECT_DIR = CMakeFiles\CornJam.dir
+  OBJECT_FILE_DIR = CMakeFiles\CornJam.dir\_deps\imgui-src\backends
+  dyndep = CMakeFiles/CornJam.dir/CXX.dd
+
+build CMakeFiles/CornJam.dir/CXX.dd | C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/CMakeFiles/CornJam.dir/CXXModules.json CMakeFiles/CornJam.dir/src/main.cpp.obj.modmap CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj.modmap CMakeFiles/CornJam.dir/src/game.cpp.obj.modmap CMakeFiles/CornJam.dir/src/scenes.cpp.obj.modmap CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj.modmap CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj.modmap CMakeFiles/CornJam.dir/src/globals.cpp.obj.modmap CMakeFiles/CornJam.dir/_deps/imgui-src/imgui.cpp.obj.modmap CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_draw.cpp.obj.modmap CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_widgets.cpp.obj.modmap CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_tables.cpp.obj.modmap CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_demo.cpp.obj.modmap CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_glfw.cpp.obj.modmap CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_opengl3.cpp.obj.modmap: CXX_DYNDEP__CornJam_ CMakeFiles/CornJam.dir/src/main.cpp.obj.ddi CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj.ddi CMakeFiles/CornJam.dir/src/game.cpp.obj.ddi CMakeFiles/CornJam.dir/src/scenes.cpp.obj.ddi CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj.ddi CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj.ddi CMakeFiles/CornJam.dir/src/globals.cpp.obj.ddi CMakeFiles/CornJam.dir/_deps/imgui-src/imgui.cpp.obj.ddi CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_draw.cpp.obj.ddi CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_widgets.cpp.obj.ddi CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_tables.cpp.obj.ddi CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_demo.cpp.obj.ddi CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_glfw.cpp.obj.ddi CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_opengl3.cpp.obj.ddi | C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/CMakeFiles/CornJam.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -195,16 +298,15 @@ build CMakeFiles/CornJam.dir/CXX.dd | C$:/Users/maxwo/programming-journey-2025/p
 #############################################
 # Link the executable C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.exe
 
-build C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/bin/CornJam.exe: CXX_EXECUTABLE_LINKER__CornJam_ CMakeFiles/CornJam.dir/src/main.cpp.obj CMakeFiles/CornJam.dir/src/misc/glad.c.obj CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj CMakeFiles/CornJam.dir/src/game.cpp.obj CMakeFiles/CornJam.dir/src/scenes.cpp.obj CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj CMakeFiles/CornJam.dir/src/globals.cpp.obj
+build C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/bin/CornJam.exe: CXX_EXECUTABLE_LINKER__CornJam_ CMakeFiles/CornJam.dir/src/main.cpp.obj CMakeFiles/CornJam.dir/src/misc/glad.c.obj CMakeFiles/CornJam.dir/src/misc/shaders.cpp.obj CMakeFiles/CornJam.dir/src/game.cpp.obj CMakeFiles/CornJam.dir/src/scenes.cpp.obj CMakeFiles/CornJam.dir/src/misc/collision.cpp.obj CMakeFiles/CornJam.dir/src/misc/utility.cpp.obj CMakeFiles/CornJam.dir/src/globals.cpp.obj CMakeFiles/CornJam.dir/_deps/imgui-src/imgui.cpp.obj CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_draw.cpp.obj CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_widgets.cpp.obj CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_tables.cpp.obj CMakeFiles/CornJam.dir/_deps/imgui-src/imgui_demo.cpp.obj CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_glfw.cpp.obj CMakeFiles/CornJam.dir/_deps/imgui-src/backends/imgui_impl_opengl3.cpp.obj
   LINK_LIBRARIES = -lglfw3  -lopengl32  -lgdi32  -lOpenAL32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Users/maxwo/programming-journey-2025/projects/cmake-test/lib
   OBJECT_DIR = CMakeFiles\CornJam.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_COMPILE_PDB = CMakeFiles\CornJam.dir\
   TARGET_FILE = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.exe
   TARGET_IMPLIB = libCornJam.dll.a
-  TARGET_PDB = C:\Users\maxwo\programming-journey-2025\projects\cmake-test\bin\CornJam.pdb
+  TARGET_PDB = CornJam.exe.dbg
 
 
 #############################################
@@ -261,14 +363,14 @@ build all: phony C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/bi
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/cmake_install.cmake: RERUN_CMAKE | C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCCompilerABI.c C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerSupport.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeNinjaFindMake.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeParseLibraryArchitecture.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystem.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeTestCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CrayClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX-CXXImportStd.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/LCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/OrangeC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/TIClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Tasking-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeDetermineLinkerId.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeInspectCLinker.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeInspectCXXLinker.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.3/CMakeCCompiler.cmake CMakeFiles/4.0.3/CMakeCXXCompiler.cmake CMakeFiles/4.0.3/CMakeRCCompiler.cmake CMakeFiles/4.0.3/CMakeSystem.cmake
+build build.ninja C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/cmake_install.cmake: RERUN_CMAKE | C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/PatchInfo.txt.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/RepositoryInfo.txt.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/UpdateInfo.txt.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/gitclone.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/gitupdate.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/shared_internal_commands.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/stepscript.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FetchContent.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindGit.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.3/CMakeCCompiler.cmake CMakeFiles/4.0.3/CMakeCXXCompiler.cmake CMakeFiles/4.0.3/CMakeRCCompiler.cmake CMakeFiles/4.0.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCCompilerABI.c C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXCompilerABI.cpp C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCompilerIdDetection.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCXXCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerId.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineCompilerSupport.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineRCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeDetermineSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeFindBinUtils.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeNinjaFindMake.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeParseImplicitIncludeInfo.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeParseImplicitLinkInfo.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeParseLibraryArchitecture.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCCompiler.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystem.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeTestCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeTestCXXCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeTestCompilerCommon.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeTestRCCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/ADSP-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/ARMCC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/ARMClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/AppleClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Borland-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Bruce-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Clang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Clang-DetermineCompilerInternal.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Compaq-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Cray-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CrayClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Embarcadero-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Fujitsu-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GHS-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX-CXXImportStd.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-FindBinUtils.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/HP-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/HP-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IAR-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Intel-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/LCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/MSVC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/NVHPC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/NVIDIA-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/OrangeC-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/PGI-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/PathScale-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/SCO-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/SDCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/SunPro-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/TI-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/TIClang-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Tasking-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/Watcom-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/XL-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/XL-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/XLClang-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/zOS-C-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeDetermineLinkerId.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeInspectCLinker.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeInspectCXXLinker.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/FeatureTesting.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Determine-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.3/CMakeCCompiler.cmake CMakeFiles/4.0.3/CMakeCXXCompiler.cmake CMakeFiles/4.0.3/CMakeRCCompiler.cmake CMakeFiles/4.0.3/CMakeSystem.cmake: phony
+build C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCXXInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeCommonLanguageInclude.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeGenericSystem.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeInitializeConfigs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeLanguageInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeRCInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/CMakeSystemSpecificInitialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/CMakeCommonCompilerMacros.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Compiler/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/PatchInfo.txt.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/RepositoryInfo.txt.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/UpdateInfo.txt.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/gitclone.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/gitupdate.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/shared_internal_commands.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/ExternalProject/stepscript.cmake.in C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FetchContent.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindGit.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/FindPackageMessage.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCXXLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Internal/CMakeCommonLinkerInformation.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Linker/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-C.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX-ABI.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU-CXX.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-GNU.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-Initialize.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows-windres.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/Windows.cmake C$:/Program$ Files/CMake/share/cmake-4.0/Modules/Platform/WindowsPaths.cmake C$:/Users/maxwo/programming-journey-2025/projects/cmake-test/CMakeLists.txt CMakeCache.txt CMakeFiles/4.0.3/CMakeCCompiler.cmake CMakeFiles/4.0.3/CMakeCXXCompiler.cmake CMakeFiles/4.0.3/CMakeRCCompiler.cmake CMakeFiles/4.0.3/CMakeSystem.cmake: phony
 
 
 #############################################

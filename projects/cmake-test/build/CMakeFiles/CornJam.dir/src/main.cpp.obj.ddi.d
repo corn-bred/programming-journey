@@ -437,4 +437,8 @@ CMakeFiles\CornJam.dir\src\main.cpp.obj.ddi: \
  C:/Users/maxwo/programming-journey-2025/projects/cmake-test/include/cornbreadlib/computeshader.h \
  C:/Users/maxwo/programming-journey-2025/projects/cmake-test/include/cornjam/bitmaptext.h \
  C:/Users/maxwo/programming-journey-2025/projects/cmake-test/include/cornbreadlib/audiomanager.h \
- C:/Users/maxwo/programming-journey-2025/projects/cmake-test/include/cornbreadlib/audiodata.h
+ C:/Users/maxwo/programming-journey-2025/projects/cmake-test/include/cornbreadlib/audiodata.h \
+ C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imgui.h \
+ C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/imconfig.h \
+ C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backends/imgui_impl_glfw.h \
+ C:/Users/maxwo/programming-journey-2025/projects/cmake-test/build/_deps/imgui-src/backends/imgui_impl_opengl3.h
